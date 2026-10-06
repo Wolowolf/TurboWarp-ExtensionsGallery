@@ -29,7 +29,7 @@
   "dependencies": {
     "@turbowarp/json": "^0.1.2",
     "@turbowarp/scratchblocks": "^3.6.7",
-    "@turbowarp/types": "git+https://github.com/TurboWarp/types-tw.git#tw",
+    "@turbowarp/types": "github:Wolowolf/types-tw#7c09a0f37d6e08a3f5b09f172d5c017009999441",
     "adm-zip": "^0.5.16",
     "chokidar": "^4.0.3",
     "ejs": "^3.1.10",
