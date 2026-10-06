@@ -1,0 +1,2 @@
+# Cached build downloads are checked by SHA-256: keep their bytes exactly (no line-ending conversion).
+cached-extension-dependencies/** -text
