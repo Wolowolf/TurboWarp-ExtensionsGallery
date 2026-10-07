@@ -379,6 +379,49 @@
         }
       });
 
+      // PenguinMod Desktop: "Open Extension" would open turbowarp.org (an online editor this app never
+      // contacts). Instead the extension is sent to the editor that opened this gallery, the same way
+      // the PenguinMod gallery does it: opener.postMessage({loadExt: url}); the editor answers {p4: ...}.
+      (function () {
+        var EDITOR_ORIGIN = 'https://studio.penguinmod.com';
+        var PREFIX = 'https://turbowarp.org/editor?extension=';
+        var pending = null;
+        var pendingLabel = '';
+
+        function resetLater(link) {
+          setTimeout(function () {
+            link.textContent = pendingLabel || 'Open Extension';
+          }, 3000);
+        }
+
+        document.addEventListener('click', function (e) {
+          var link = e.target.closest ? e.target.closest('a') : null;
+          if (!link || link.href.indexOf(PREFIX) !== 0) return;
+          e.preventDefault();
+          if (!window.opener || window.opener.closed) {
+            alert('To add this extension, open this gallery from the editor (Extensions window, TurboWarp Extension Gallery), or use Copy URL and paste it into Custom Extension.');
+            return;
+          }
+          pending = link;
+          pendingLabel = link.textContent;
+          link.textContent = 'Adding...';
+          window.opener.postMessage({ loadExt: link.href.slice(PREFIX.length) }, EDITOR_ORIGIN);
+        });
+
+        window.addEventListener('message', function (e) {
+          if (e.origin !== EDITOR_ORIGIN || !e.data || !e.data.p4 || !pending) return;
+          var link = pending;
+          pending = null;
+          if (e.data.p4.type === 'success') {
+            link.textContent = 'Added!';
+          } else {
+            link.textContent = 'Could not add';
+            console.error('Extension was not added:', e.data.p4);
+          }
+          resetLater(link);
+        });
+      })();
+
       window.addEventListener("load", () => {
         const extensionElements = document.querySelectorAll(".extension");
         const container = document.querySelector(".extensions");
