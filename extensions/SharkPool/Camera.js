@@ -24,6 +24,8 @@
   const runtime = vm.runtime;
   const render = vm.renderer;
   const cameraSymbol = Symbol("SPcameraData");
+  const shadowSymbol = Symbol("SPcameraShadow");
+  const isShadowSymbol = Symbol("SPcameraIsShadow");
 
   let allCameras = Object.create(null);
   allCameras["default"] = {
@@ -92,6 +94,13 @@
     };
   }
 
+  // the un-cameraed state of this drawable may have changed: its precision shadow must be updated
+  let shadowChanges = 0;
+  function markShadowStale(drawable) {
+    drawable[cameraSymbol].shadowStale = true;
+    shadowChanges++;
+  }
+
   function translatePosition(xy, invert, camData) {
     if (invert) {
       const invRads = camData.ogDir * DEG_TO_RADIAN;
@@ -122,6 +131,7 @@
   }
 
   function bindDrawable(drawable, camera) {
+    if (drawable[isShadowSymbol]) return;
     if (!drawable[cameraSymbol]) setupState(drawable);
     const camSystem = drawable[cameraSymbol];
     if (camSystem.name === camera) return;
@@ -228,7 +238,9 @@
 
   const ogUpdatePosition = render.exports.Drawable.prototype.updatePosition;
   render.exports.Drawable.prototype.updatePosition = function (position) {
+    if (this[isShadowSymbol]) return ogUpdatePosition.call(this, position);
     if (!this[cameraSymbol]) setupState(this);
+    markShadowStale(this);
     const camSystem = this[cameraSymbol];
     const thisCam = allCameras[camSystem.name];
     let shouldEmit = false;
@@ -270,7 +282,9 @@
 
   const ogUpdateDirection = render.exports.Drawable.prototype.updateDirection;
   render.exports.Drawable.prototype.updateDirection = function (direction) {
+    if (this[isShadowSymbol]) return ogUpdateDirection.call(this, direction);
     if (!this[cameraSymbol]) setupState(this);
+    markShadowStale(this);
     const camSystem = this[cameraSymbol];
     const thisCam = allCameras[camSystem.name];
     if (camSystem.needsRefresh) {
@@ -285,7 +299,9 @@
 
   const ogUpdateScale = render.exports.Drawable.prototype.updateScale;
   render.exports.Drawable.prototype.updateScale = function (scale) {
+    if (this[isShadowSymbol]) return ogUpdateScale.call(this, scale);
     if (!this[cameraSymbol]) setupState(this);
+    markShadowStale(this);
     const camSystem = this[cameraSymbol];
     const thisCam = allCameras[camSystem.name];
     let shouldEmit = false;
@@ -319,7 +335,9 @@
 
   const ogUpdateVisible = render.exports.Drawable.prototype.updateVisible;
   render.exports.Drawable.prototype.updateVisible = function (isVisible) {
+    if (this[isShadowSymbol]) return ogUpdateVisible.call(this, isVisible);
     if (!this[cameraSymbol]) setupState(this);
+    markShadowStale(this);
     if (isVisible && this._visible !== isVisible) {
       const camSystem = this[cameraSymbol];
 
@@ -336,71 +354,188 @@
   };
 
   // For certain projects that heavily rely on collisions, different camera zooms
-  // and transforms will cause buggy behaviour. Fix this with 'precisionMode'
+  // and transforms will cause buggy behaviour. Fix this with 'precisionMode':
+  // touching checks then see every camera-bound drawable at its un-cameraed position,
+  // direction and size. Each such drawable gets a hidden "shadow" drawable kept in that
+  // state (it is never drawn: it is not in the draw list), and the check is asked about
+  // the shadows. The real drawables are never moved back and forth, so the renderer's
+  // touching data stays valid for them, and a shadow only changes when its drawable does.
+  const allShadows = new Set();
+  const shadowScale = [100, 100];
+  const shadowPosition = [0, 0];
+
+  function copyUniform(shadow, key, value) {
+    if (typeof value === "object" && value !== null && value.length !== undefined) {
+      const own = shadow._uniforms[key];
+      if (own && own.length === value.length) {
+        let changed = false;
+        for (let i = 0; i < value.length; i++) {
+          if (own[i] !== value[i]) {
+            own[i] = value[i];
+            changed = true;
+          }
+        }
+        return changed;
+      }
+      shadow._uniforms[key] = Array.from(value);
+      return true;
+    }
+    if (shadow._uniforms[key] === value) return false;
+    shadow._uniforms[key] = value;
+    return true;
+  }
+
+  function syncShadow(drawable, shadow, sync) {
+    const camSystem = drawable[cameraSymbol];
+    if (shadow._skin !== drawable._skin) shadow.skin = drawable._skin;
+    if (shadow._highQuality !== drawable._highQuality) {
+      shadow.setHighQuality(drawable._highQuality);
+    }
+    const transform = drawable._transform;
+    if (sync.t0 !== transform[0] || sync.t1 !== transform[1]) {
+      sync.t0 = transform[0];
+      sync.t1 = transform[1];
+      shadow.updateTransform([transform[0], transform[1]]);
+    }
+    const sx = camSystem.unalteredScale.x;
+    const sy = camSystem.unalteredScale.y;
+    if (sync.sx !== sx || sync.sy !== sy) {
+      sync.sx = sx;
+      sync.sy = sy;
+      shadowScale[0] = sx;
+      shadowScale[1] = sy;
+      ogUpdateScale.call(shadow, shadowScale);
+    }
+    const dir = drawable._direction + camSystem.ogDir;
+    if (sync.dir !== dir) {
+      sync.dir = dir;
+      ogUpdateDirection.call(shadow, dir);
+    }
+    const pos = camSystem.unalteredPosition;
+    if (sync.x !== pos[0] || sync.y !== pos[1]) {
+      sync.x = pos[0];
+      sync.y = pos[1];
+      shadowPosition[0] = pos[0];
+      shadowPosition[1] = pos[1];
+      ogUpdatePosition.call(shadow, shadowPosition);
+    }
+    let effectsChanged = shadow.enabledEffects !== drawable.enabledEffects;
+    shadow.enabledEffects = drawable.enabledEffects;
+    for (const key in drawable._uniforms) {
+      if (key === "u_modelMatrix") continue;
+      if (copyUniform(shadow, key, drawable._uniforms[key])) effectsChanged = true;
+    }
+    if (effectsChanged) shadow.setConvexHullDirty();
+    // share the drawable's outline (it is in costume pixels, the same for both)
+    if (!drawable.needsConvexHullPoints()) {
+      if (
+        shadow._convexHullPoints !== drawable._convexHullPoints ||
+        shadow.needsConvexHullPoints()
+      ) {
+        shadow.setConvexHullPoints(drawable._convexHullPoints);
+      }
+    } else if (!shadow.needsConvexHullPoints()) {
+      shadow.setConvexHullDirty();
+    }
+    if (shadow._visible !== drawable._visible) {
+      ogUpdateVisible.call(shadow, drawable._visible);
+    }
+  }
+
+  function getSyncedShadow(drawable) {
+    let shadow = drawable[shadowSymbol];
+    if (!shadow) {
+      const id = render._nextDrawableId++;
+      shadow = new render.exports.Drawable(id, render);
+      shadow[isShadowSymbol] = {
+        version: NaN, x: NaN, y: NaN, dir: NaN, sx: NaN, sy: NaN, t0: NaN, t1: NaN,
+      };
+      render._allDrawables[id] = shadow;
+      drawable[shadowSymbol] = shadow;
+      allShadows.add(shadow);
+    }
+    const sync = shadow[isShadowSymbol];
+    const camSystem = drawable[cameraSymbol];
+    // _touchingVersion (if the renderer has it) goes up whenever the drawable's touching data changes
+    const version = drawable._touchingVersion;
+    if (camSystem.shadowStale || version === undefined || sync.version !== version) {
+      camSystem.shadowStale = false;
+      sync.version = version;
+      syncShadow(drawable, shadow, sync);
+    }
+    return shadow;
+  }
+
+  // The same candidate list gets the same list of shadow IDs, re-checked only when something changed.
+  const shadowLists = new WeakMap();
+  function getShadowIds(candidateIds) {
+    let entry = shadowLists.get(candidateIds);
+    if (!entry) {
+      entry = { source: [], ids: [], shadowChanges: -1, renderChanges: -1 };
+      shadowLists.set(candidateIds, entry);
+    }
+    const source = entry.source;
+    let same = source.length === candidateIds.length;
+    for (let i = 0; same && i < source.length; i++) same = source[i] === candidateIds[i];
+    if (
+      same &&
+      entry.shadowChanges === shadowChanges &&
+      render._touchingChanges !== undefined &&
+      entry.renderChanges === render._touchingChanges
+    ) {
+      return entry.ids;
+    }
+    const ids = entry.ids;
+    ids.length = candidateIds.length;
+    source.length = candidateIds.length;
+    for (let i = 0; i < candidateIds.length; i++) {
+      const id = candidateIds[i];
+      source[i] = id;
+      const d = render._allDrawables[id];
+      ids[i] = d && d[cameraSymbol] && !d[isShadowSymbol] ? getSyncedShadow(d)._id : id;
+    }
+    entry.shadowChanges = shadowChanges;
+    entry.renderChanges = render._touchingChanges;
+    return ids;
+  }
+
   const ogTouchingDrawables = render.isTouchingDrawables;
-  render.isTouchingDrawables = function (targetId, candidateIds) {
+  render.isTouchingDrawables = function (targetId, candidateIds = this._drawList) {
     const target = this._allDrawables[targetId];
     if (!target) {
       return ogTouchingDrawables.call(this, targetId, candidateIds);
     }
 
     const camSystem = target[cameraSymbol];
-    if (!camSystem || !allCameras[camSystem.name]?.precisionMode) {
+    if (!camSystem || !allCameras[camSystem.name]?.precisionMode || target[isShadowSymbol]) {
       return ogTouchingDrawables.call(this, targetId, candidateIds);
     }
 
-    const modified = [];
+    const targetShadow = getSyncedShadow(target);
+    return ogTouchingDrawables.call(this, targetShadow._id, getShadowIds(candidateIds));
+  };
 
-    // Normalize all requested drawables to a default state
-    const normalize = (drawable) => {
-      const cam = drawable[cameraSymbol];
-      if (!cam) return;
-
-      modified.push({
-        drawable,
-        x: drawable._position[0],
-        y: drawable._position[1],
-        dir: drawable._direction,
-        sx: drawable._scale[0],
-        sy: drawable._scale[1],
-      });
-
-      drawable._position[0] = cam.unalteredPosition[0];
-      drawable._position[1] = cam.unalteredPosition[1];
-      drawable._direction += cam.ogDir;
-      drawable._scale[0] = cam.unalteredScale.x;
-      drawable._scale[1] = cam.unalteredScale.y;
-
-      drawable._skinScaleDirty = true;
-      drawable._rotationCenterDirty = true;
-      drawable._calculateTransform();
-    };
-
-    normalize(target);
-    for (let i = 0; i < candidateIds.length; i++) {
-      const d = this._allDrawables[candidateIds[i]];
-      if (d && d[cameraSymbol]) normalize(d);
+  // shadows share their drawable's costume: tell them when it changes
+  const ogSkinWasAltered = render.skinWasAltered;
+  render.skinWasAltered = function (skin) {
+    ogSkinWasAltered.call(this, skin);
+    for (const shadow of allShadows) {
+      if (shadow._skin === skin) shadow._skinWasAltered();
     }
+  };
 
-    try {
-      return ogTouchingDrawables.call(this, targetId, candidateIds);
-    } finally {
-      // Restore requested drawables back to their camera states
-      for (let i = 0; i < modified.length; i++) {
-        const m = modified[i];
-        const d = m.drawable;
-
-        d._position[0] = m.x;
-        d._position[1] = m.y;
-        d._direction = m.dir;
-        d._scale[0] = m.sx;
-        d._scale[1] = m.sy;
-
-        d._skinScaleDirty = true;
-        d._rotationCenterDirty = true;
-        d._calculateTransform();
-      }
+  // remove a drawable's shadow with it
+  const ogDestroyDrawable = render.destroyDrawable;
+  render.destroyDrawable = function (drawableID, group) {
+    const drawable = this._allDrawables[drawableID];
+    const shadow = drawable && drawable[shadowSymbol];
+    if (shadow) {
+      allShadows.delete(shadow);
+      delete this._allDrawables[shadow._id];
+      shadow.dispose();
+      drawable[shadowSymbol] = undefined;
     }
+    return ogDestroyDrawable.call(this, drawableID, group);
   };
 
   // Clones should inherit the parents camera
