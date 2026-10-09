@@ -63,11 +63,6 @@ All images in this folder are licensed under the [GNU General Public License ver
  - Dividers circle from https://svgsilh.com/image/154075.html.
  - Background based on https://superdesigner.co/tools/patterns.
 
-## true-fantom/couplers.svg
- - Created by [@True-Fantom](https://scratch.mit.edu/users/TrueFantom/) in https://github.com/TurboWarp/extensions/pull/498.
- - Function icon from https://github.com/Templarian/MaterialDesign/blob/0a46ed9cccbe3738b904f5a1f014549dbae1f639/svg/function.svg under [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0).
- - Background based on https://bgjar.com/circuit-board under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
-
 ## true-fantom/regexp.svg
  - Created by [@True-Fantom](https://scratch.mit.edu/users/TrueFantom/) in https://github.com/TurboWarp/extensions/pull/498.
  - Background based on https://bgjar.com/wave-line under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
@@ -143,10 +138,6 @@ All images in this folder are licensed under the [GNU General Public License ver
  - Created by [@BlueDome77](https://github.com/BlueDome77) in https://github.com/TurboWarp/extensions/issues/90#issuecomment-1586143227
  - Based on image created by [@Martinelplayz](https://scratch.mit.edu/users/MARTINELPLAYZ/) in https://github.com/TurboWarp/extensions/pull/504#issuecomment-1574243161
 
-## Longboost/color_channels.svg
- - Created by [@CST1229](https://github.com/CST1229) in https://github.com/TurboWarp/extensions/issues/90#issuecomment-1595238491
- - Based on image created by [@BlueDome77](https://github.com/BlueDome77) in https://github.com/TurboWarp/extensions/issues/90#issuecomment-1595164040
-
 ## mdwalters/notifications.svg
  - Created by [@BlueDome77](https://github.com/BlueDome77) in https://github.com/TurboWarp/extensions/issues/90#issuecomment-1637077987
 
@@ -202,12 +193,6 @@ All images in this folder are licensed under the [GNU General Public License ver
 
 ## DNin/wake-lock.svg
  - Created by [@NamelessCat](https://scratch.mit.edu/users/NamelessCat/) in https://github.com/TurboWarp/extensions/issues/90#issuecomment-1690949400
-
-## veggiecan/browserfullscreen.svg
- - Created by [@xTvii](https://github.com/xTvii) in https://github.com/TurboWarp/extensions/issues/1079#issue-1926845796
-
-## NexusKitten/controlcontrols.svg
- - Created by [HamsterCreativity](https://github.com/HamsterCreativity) in https://github.com/TurboWarp/extensions/issues/90#issuecomment-1694410464
 
 ## Lily/SoundExpanded.svg
  - Created by [HamsterCreativity](https://github.com/HamsterCreativity) in https://github.com/TurboWarp/extensions/issues/90#issuecomment-1694410464
