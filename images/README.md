@@ -19,11 +19,6 @@ All images in this folder are licensed under the [GNU General Public License ver
  - Wait cursor based on https://commons.wikimedia.org/wiki/File:%D0%9A%D1%83%D1%80%D1%81%D0%BE%D1%80_%22%D0%97%D0%B0%D0%BD%D1%8F%D1%82%22.png under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
  - Background based on https://app.haikei.app/.
 
-## gamepad.svg
- - Created by [@True-Fantom](https://scratch.mit.edu/users/TrueFantom/) in https://github.com/TurboWarp/extensions/pull/498.
- - Gamepad icon based on https://icon-icons.com/icon/appliances-console-controller-dualshock-gamepad-games-videogame/106553 under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
- - Background based on https://app.haikei.app/.
-
 ## base.svg
  - Created by [@True-Fantom](https://scratch.mit.edu/users/TrueFantom/) in https://github.com/TurboWarp/extensions/pull/498.
 
@@ -39,16 +34,8 @@ All images in this folder are licensed under the [GNU General Public License ver
  - Created by [@True-Fantom](https://scratch.mit.edu/users/TrueFantom/) in https://github.com/TurboWarp/extensions/pull/498.
  - Green flag icon is from the Scratch Foundation.
 
-## clouddata-ping.svg
- - Created by [@BlueDome77](https://github.com/BlueDome77) in https://github.com/TurboWarp/extensions/issues/90#issuecomment-1586210422
- - Based on work by [@David-Orangemoon](https://scratch.mit.edu/users/pinksheep2917/) in https://github.com/TurboWarp/extensions/issues/90#issuecomment-1367719189
-
 ## fetch.svg
  - Created by [@xTvii](https://github.com/xTvii) in https://github.com/TurboWarp/extensions/issues/90#issuecomment-1745679283
-
-## penplus.svg
- - Created by [@David-Orangemoon](https://scratch.mit.edu/users/pinksheep2917/) in https://github.com/TurboWarp/extensions/pull/103.
- - Font is Noto Sans.
 
 ## pointerlock.svg
  - Created by [@True-Fantom](https://scratch.mit.edu/users/TrueFantom/) in https://github.com/TurboWarp/extensions/pull/498.
@@ -68,13 +55,6 @@ All images in this folder are licensed under the [GNU General Public License ver
 
 ## true-fantom/network.svg
  - Created by [@True-Fantom](https://scratch.mit.edu/users/TrueFantom/) in https://github.com/TurboWarp/extensions/pull/122#issue-1524383752.
-
-## DT/cameracontrols.svg
- - Created by [@True-Fantom](https://scratch.mit.edu/users/TrueFantom/) in https://github.com/TurboWarp/extensions/pull/498.
- - Square from https://icon-icons.com/icon/adding-black-square-button-interface-symbol/73101 under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
- - Dango based on dango from [Twemoji](https://twemoji.twitter.com/) under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
- - Camera from https://commons.wikimedia.org/wiki/File:Camera-icon-estilizado.svg.
- - Background based on https://bgjar.com/animated-shape under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 
 ## true-fantom/math.svg
  - Created by [@True-Fantom](https://scratch.mit.edu/users/TrueFantom/) in https://github.com/TurboWarp/extensions/pull/498.
@@ -97,12 +77,6 @@ All images in this folder are licensed under the [GNU General Public License ver
  - Dango based on dango from [Twemoji](https://twemoji.twitter.com/) under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
  - Stars from https://icon-icons.com/icon/star/64489 under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
  - Cut icon from https://icon-icons.com/icon/screen-cut-filled/199719 under [MIT](https://opensource.org/license/mit/).
-
-## files.svg
- - Created by [@True-Fantom](https://scratch.mit.edu/users/TrueFantom/) in https://github.com/TurboWarp/extensions/pull/498.
- - File icons based on https://icon-icons.com/icon/file-pdf/153412 under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
- - Folder icon is based on https://fontawesomeicons.com/svg/icons/folder-open under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
- - Background based on https://bgjar.com/rect-light under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 
 ## -SIPC-/consoles.svg
  - Created by [@SharkPool](https://scratch.mit.edu/users/DemonX5/)
@@ -127,17 +101,11 @@ All images in this folder are licensed under the [GNU General Public License ver
 ## NOname-awa/math-and-string.svg
  - Created by @NOname in https://github.com/TurboWarp/extensions/pull/316.
 
-## NOname-awa/more-comparisons.svg
- - Created by [@True-Fantom](https://scratch.mit.edu/users/TrueFantom/) in https://github.com/TurboWarp/extensions/issues/90#issuecomment-1479376273.
-
 ## NOname-awa/global-coordinate.svg
  - Created by [@True-Fantom](https://scratch.mit.edu/users/TrueFantom/) in https://github.com/TurboWarp/extensions/pull/498.
  - Square from https://icon-icons.com/icon/adding-black-square-button-interface-symbol/73101 under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
  - Dango based on dango from [Twemoji](https://twemoji.twitter.com/) under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
  - Arrow icons from the Scratch Foundation.
-
-## JeremyGamer13/tween.svg
- - Created by [@True-Fantom](https://scratch.mit.edu/users/TrueFantom/) in https://github.com/TurboWarp/extensions/pull/498.
 
 ## TheShovel/CanvasEffects.svg
  - Created by @Pizzalover4783 in https://github.com/TurboWarp/extensions/issues/90#issuecomment-1526886264.
@@ -162,9 +130,6 @@ All images in this folder are licensed under the [GNU General Public License ver
  - Created by [@True-Fantom](https://scratch.mit.edu/users/TrueFantom/) in https://github.com/TurboWarp/extensions/pull/498.
  - Newgrounds logo based on https://logos.fandom.com/wiki/Newgrounds/Other under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
 
-## NexusKitten/sgrab.svg
- - Created by [@HamsterCreativity](https://github.com/HamsterCreativity) in https://github.com/TurboWarp/extensions/issues/90#issuecomment-1595280195
-
 ## Lily/CommentBlocks.svg
  - Created by [@True-Fantom](https://scratch.mit.edu/users/TrueFantom/) and [@LilyMakesThings](https://scratch.mit.edu/users/LilyMakesThings/) in https://github.com/TurboWarp/extensions/pull/498.
 
@@ -172,15 +137,9 @@ All images in this folder are licensed under the [GNU General Public License ver
  - Created by [@LilyMakesThings](https://scratch.mit.edu/users/LilyMakesThings/) in https://github.com/TurboWarp/extensions/pull/656.
  - Dango based on dango from [Twemoji](https://twemoji.twitter.com/) under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 
-## Lily/TempVariables2.svg
- - Created by [@LilyMakesThings](https://scratch.mit.edu/users/LilyMakesThings/) in https://github.com/TurboWarp/extensions/pull/656.
-
 ## obviousAlexC/SensingPlus.svg
  - Created by [@xTvii](https://github.com/xTvii) in https://github.com/TurboWarp/extensions/issues/1079#issue-1926845796
  - Touching finger icon based on https://fonts.google.com/icons?selected=Material+Icons:touch_app:&icon.set=Material+Icons&icon.style=Filled under [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0).
-
-## lab/text.svg
- - Created by [@LilyMakesThings](https://scratch.mit.edu/users/LilyMakesThings/).
 
 ## ar.svg
  - Created by [@True-Fantom](https://scratch.mit.edu/users/TrueFantom/) in https://github.com/TurboWarp/extensions/pull/498.
@@ -205,10 +164,6 @@ All images in this folder are licensed under the [GNU General Public License ver
 
 ## mdwalters/notifications.svg
  - Created by [@BlueDome77](https://github.com/BlueDome77) in https://github.com/TurboWarp/extensions/issues/90#issuecomment-1637077987
-
-## Lily/MoreTimers.svg
-- Created by [@LilyMakesThings](https://scratch.mit.edu/users/LilyMakesThings/) in https://github.com/TurboWarp/extensions/pull/656.
-- Timer SVG based from https://www.svgrepo.com/svg/2045/stopwatch under CC0.
 
 ## rixxyx.svg
  - Created by [@HamsterCreativity](https://github.com/HamsterCreativity)
@@ -252,20 +207,12 @@ All images in this folder are licensed under the [GNU General Public License ver
  - Created by [@xTvii](https://github.com/xTvii) in https://github.com/TurboWarp/extensions/issues/1079#issuecomment-1749060196
  - The ship is based on [this](https://www.ldoceonline.com/external/images/logo_home_smartphone.svg?version=1.2.61) logo from the [ldoceonline](https://www.ldoceonline.com/) website
 
-## Lily/Skins.svg
- - Created by [@LilyMakesThings](https://github.com/LilyMakesThings).
- - Dango based on dango from [Twemoji](https://twemoji.twitter.com/) under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
- - Background "blobs" by Scratch.
-
 ## XeroName/Deltatime.svg
  - Created by [@XeroName](https://scratch.mit.edu/users/plant2014/) in https://github.com/TurboWarp/extensions/pull/622
  - Incorporated some changes by [@xTvii](https://github.com/xTvii) in https://github.com/TurboWarp/extensions/issues/1079#issue-1926845796
 
 ## TheShovel/LZ-String.svg
  - Created by [HamsterCreativity](https://github.com/HamsterCreativity) in https://github.com/TurboWarp/extensions/issues/90#issuecomment-1658130807
-
-## NexusKitten/moremotion.svg;
- - Created by [HamsterCreativity](https://github.com/HamsterCreativity) in https://github.com/TurboWarp/extensions/issues/90#issuecomment-1646987348
 
 ## XmerOriginals/closecontrol.svg
  - Created by [xTvii](https://github.com/xTvii) in https://github.com/TurboWarp/extensions/issues/1607
@@ -274,10 +221,6 @@ All images in this folder are licensed under the [GNU General Public License ver
  - Created by [@xTvii](https://github.com/xTvii) in https://github.com/TurboWarp/extensions/issues/1079#issuecomment-1751696386
 
 ## Lily/ListTools.svg
- - Created by [@LilyMakesThings](https://github.com/LilyMakesThings).
- - Background "blobs" by Scratch.
-
-## Lily/MoreEvents.svg
  - Created by [@LilyMakesThings](https://github.com/LilyMakesThings).
  - Background "blobs" by Scratch.
 

@@ -5,9 +5,7 @@ const aliases = {
   "/LukeManiaStudios/lmsutils.js": "/Lily/lmsutils.js",
   "/LukeManiaStudios/LooksPlus.js": "/Lily/LooksPlus.js",
   "/LukeManiaStudios/McUtils.js": "/Lily/McUtils.js",
-  "/LukeManiaStudios/MoreTimers.js": "/Lily/MoreTimers.js",
   "/LukeManiaStudios/TempVariables.js": "/Lily/TempVariables.js",
-  "/LukeManiaStudios/TempVariables2.js": "/Lily/TempVariables2.js",
 };
 
 export default aliases;
