@@ -51,10 +51,6 @@
     "https://raw.githubusercontent.com/SharkPool-SP/pizzicato/5c6ef4e1caa37ca4a3e579d6444188617460e214/distr/Pizzicato.min.js": {
       "sha256": "6518882687ffbbb43c3af5a5a4f4381ca2a2efb0d2db4d456d232af0f08a0b07",
       "contentType": "text/plain; charset=utf-8"
-    },
-    "https://raw.githubusercontent.com/dectalk/tw-dectalk/b387df5a1133dd08a8f3af94d7899dec3f507fd8/dtc.js": {
-      "sha256": "de29c298d3e260d348e9f8eed74e644258e8222fdf741a55665400d560876e8b",
-      "contentType": "application/octet-stream"
     }
   }
 }

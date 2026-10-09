@@ -118,20 +118,9 @@ All images in this folder are licensed under the [GNU General Public License ver
 ## NOname-awa/graphics2d.svg
  - Created by @Pizzalover4783 in https://github.com/TurboWarp/extensions/issues/90#issuecomment-1550426448.
 
-## gamejolt.svg
- - Created by [@True-Fantom](https://scratch.mit.edu/users/TrueFantom/) in https://github.com/TurboWarp/extensions/pull/498.
- - GameJolt logo based on https://commons.wikimedia.org/wiki/File:LogoGameJolt.png under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
-
 ## itchio.svg
  - Created by [@True-Fantom](https://scratch.mit.edu/users/TrueFantom/) in https://github.com/TurboWarp/extensions/pull/498.
  - Itch.io logo based on https://commons.wikimedia.org/wiki/File:Itch.io_logo.svg.
-
-## obviousAlexC/newgroundsIO.svg
- - Created by [@True-Fantom](https://scratch.mit.edu/users/TrueFantom/) in https://github.com/TurboWarp/extensions/pull/498.
- - Newgrounds logo based on https://logos.fandom.com/wiki/Newgrounds/Other under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
-
-## Lily/CommentBlocks.svg
- - Created by [@True-Fantom](https://scratch.mit.edu/users/TrueFantom/) and [@LilyMakesThings](https://scratch.mit.edu/users/LilyMakesThings/) in https://github.com/TurboWarp/extensions/pull/498.
 
 ## Lily/ClonesPlus.svg
  - Created by [@LilyMakesThings](https://scratch.mit.edu/users/LilyMakesThings/) in https://github.com/TurboWarp/extensions/pull/656.
@@ -158,15 +147,8 @@ All images in this folder are licensed under the [GNU General Public License ver
  - Created by [@CST1229](https://github.com/CST1229) in https://github.com/TurboWarp/extensions/issues/90#issuecomment-1595238491
  - Based on image created by [@BlueDome77](https://github.com/BlueDome77) in https://github.com/TurboWarp/extensions/issues/90#issuecomment-1595164040
 
-## qxsck/data-analysis.svg
- - Created by [@xTvii](https://github.com/xTvii) in https://github.com/TurboWarp/extensions/issues/1079#issue-1926845796
- - Based on image created by [@Flappy25](https://github.com/Flappy25) in https://github.com/TurboWarp/extensions/issues/90#issuecomment-1575100933
-
 ## mdwalters/notifications.svg
  - Created by [@BlueDome77](https://github.com/BlueDome77) in https://github.com/TurboWarp/extensions/issues/90#issuecomment-1637077987
-
-## rixxyx.svg
- - Created by [@HamsterCreativity](https://github.com/HamsterCreativity)
 
 ## Skyhigh173/bigint.svg
  - Created by [@HamsterCreativity](https://github.com/HamsterCreativity) in https://github.com/TurboWarp/extensions/issues/90#issuecomment-1593886519
@@ -199,9 +181,6 @@ All images in this folder are licensed under the [GNU General Public License ver
 
 ## godslayerakp/http.svg
  - Created by [@wiktorlaskowski](https://github.com/wiktorlaskowski) in https://github.com/TurboWarp/extensions/issues/90#issuecomment-1636912111
-
-## Alestore/nfcwarp.svg
- - Created by [@HamsterCreativity](https://github.com/HamsterCreativity) in https://github.com/TurboWarp/extensions/issues/90#issuecomment-1636726352
 
 ## veggiecan/LongmanDictionary.svg
  - Created by [@xTvii](https://github.com/xTvii) in https://github.com/TurboWarp/extensions/issues/1079#issuecomment-1749060196
@@ -257,15 +236,8 @@ All images in this folder are licensed under the [GNU General Public License ver
 ## CST1229/images.svg
  - Created by [@wiktorlaskowski](https://github.com/wiktorlaskowski) in https://github.com/TurboWarp/extensions/pull/2144
 
-## shreder95ua/resolution.svg
- - Created by [@xTvii](https://github.com/xTvii) in https://github.com/TurboWarp/extensions/issues/1079#issue-1926845796
-
 ## CubesterYT/KeySimulation.svg
  - Created by [@SharkPool-SP](https://github.com/SharkPool-SP/)
 
 ## DogeisCut/FormatNumbers.png
  - Created by [@Dillon](https://github.com/DillonRGaming)
-
-## NishiOwO/dectalk.png
- - Created by [@Dogo6647](https://github.com/Dogo6647)
- - Used Arimo from Google Fonts.
