@@ -1,3 +1,9 @@
+// Name: Text Case
+// ID: medericodertextcase
+// Description: Change text to upper or lower case, check what case a text is in, compare texts and add glitches.
+// By: Médéric NIOT
+// License: Apache-2.0
+
 /*!
  * Copyright 2023 Médéric NIOT
  *
