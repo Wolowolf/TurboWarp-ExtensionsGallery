@@ -63,26 +63,11 @@ All images in this folder are licensed under the [GNU General Public License ver
  - Dividers circle from https://svgsilh.com/image/154075.html.
  - Background based on https://superdesigner.co/tools/patterns.
 
-## true-fantom/regexp.svg
- - Created by [@True-Fantom](https://scratch.mit.edu/users/TrueFantom/) in https://github.com/TurboWarp/extensions/pull/498.
- - Background based on https://bgjar.com/wave-line under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
-
 ## Xeltalliv/clippingblending.svg
  - Created by [@True-Fantom](https://scratch.mit.edu/users/TrueFantom/) and @Xeltalliv in https://github.com/TurboWarp/extensions/pull/498.
  - Dango based on dango from [Twemoji](https://twemoji.twitter.com/) under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
  - Stars from https://icon-icons.com/icon/star/64489 under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
  - Cut icon from https://icon-icons.com/icon/screen-cut-filled/199719 under [MIT](https://opensource.org/license/mit/).
-
-## -SIPC-/consoles.svg
- - Created by [@SharkPool](https://scratch.mit.edu/users/DemonX5/)
- - Based on an image by [@SIPC](https://github.com/SIPC) in https://github.com/TurboWarp/extensions/issues/90#issuecomment-1431207669
-
-## -SIPC-/time.svg
- - Created by [@SharkPool](https://scratch.mit.edu/users/DemonX5/)
- - Based on an image by [@SIPC](https://github.com/SIPC) in https://github.com/TurboWarp/extensions/issues/90#issuecomment-1431207669.
-
-## Skyhigh173/json.svg
- - Based on work by [@xTvii] in https://github.com/TurboWarp/extensions/issues/1079#issue-1926845796.
 
 ## text.svg
  - Based on https://github.com/ScratchCE/scratch-gui/blob/develop/src/lib/libraries/extensions/strings/strings.png by [@JoshsAccount](https://scratch.mit.edu/users/JoshsAccount/) under [The GNU General Public License version 3](https://www.gnu.org/licenses/gpl-3.0.html).
@@ -124,10 +109,6 @@ All images in this folder are licensed under the [GNU General Public License ver
 ## obviousAlexC/SensingPlus.svg
  - Created by [@xTvii](https://github.com/xTvii) in https://github.com/TurboWarp/extensions/issues/1079#issue-1926845796
  - Touching finger icon based on https://fonts.google.com/icons?selected=Material+Icons:touch_app:&icon.set=Material+Icons&icon.style=Filled under [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0).
-
-## ar.svg
- - Created by [@True-Fantom](https://scratch.mit.edu/users/TrueFantom/) in https://github.com/TurboWarp/extensions/pull/498.
- - Background based on https://app.haikei.app/.
 
 ## local-storage.svg
  - Created by [@True-Fantom](https://scratch.mit.edu/users/TrueFantom/) in https://github.com/TurboWarp/extensions/pull/498.
@@ -184,9 +165,6 @@ All images in this folder are licensed under the [GNU General Public License ver
 ## XmerOriginals/closecontrol.svg
  - Created by [xTvii](https://github.com/xTvii) in https://github.com/TurboWarp/extensions/issues/1607
 
-## Lily/AllMenus.svg
- - Created by [@xTvii](https://github.com/xTvii) in https://github.com/TurboWarp/extensions/issues/1079#issuecomment-1751696386
-
 ## Lily/ListTools.svg
  - Created by [@LilyMakesThings](https://github.com/LilyMakesThings).
  - Background "blobs" by Scratch.
@@ -196,10 +174,6 @@ All images in this folder are licensed under the [GNU General Public License ver
 
 ## Lily/SoundExpanded.svg
  - Created by [HamsterCreativity](https://github.com/HamsterCreativity) in https://github.com/TurboWarp/extensions/issues/90#issuecomment-1694410464
-
-## Lily/Assets.svg
- - Created by [@LilyMakesThings](https://github.com/LilyMakesThings).
- - Dango based on dango from [Twemoji](https://twemoji.twitter.com/) under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 
 ## iframe.svg
  - Created by [@NamelessCat](https://scratch.mit.edu/users/NamelessCat/)
@@ -217,9 +191,6 @@ All images in this folder are licensed under the [GNU General Public License ver
 
 ## Clay/htmlEncode.svg
  - Created by [@clay-rip](https://github.com/clay-rip) in https://github.com/TurboWarp/extensions/issues/90#issuecomment-1849825710
-
-## CST1229/images.svg
- - Created by [@wiktorlaskowski](https://github.com/wiktorlaskowski) in https://github.com/TurboWarp/extensions/pull/2144
 
 ## CubesterYT/KeySimulation.svg
  - Created by [@SharkPool-SP](https://github.com/SharkPool-SP/)
