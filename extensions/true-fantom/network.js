@@ -2,6 +2,7 @@
 // ID: truefantomnetwork
 // Description: Various blocks for interacting with the network.
 // By: TrueFantom <https://scratch.mit.edu/users/TrueFantom/>
+// By: RedMan13 <https://scratch.mit.edu/users/RedMan13/>
 // License: MIT
 
 ((Scratch) => {
@@ -12,9 +13,19 @@
 
   const Cast = Scratch.Cast;
 
+  // Request headers, response headers, multipart forms and data: URLs come from HTTP by RedMan13 (MIT).
+  const blobToDataURL = (blob) =>
+    new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = () => reject(reader.error);
+      reader.readAsDataURL(blob);
+    });
+
   const fetch_url = (
     { USER_URL, BODY, CONTENT_TYPE, RESPONSES_TYPES, SPLIT },
-    METHOD
+    METHOD,
+    ext
   ) => {
     SPLIT = Cast.toString(SPLIT);
     CONTENT_TYPE = Cast.toNumber(CONTENT_TYPE);
@@ -27,18 +38,33 @@
             .filter((word) => word !== "")
         : ["9"];
     let single = METHOD === "GET" || METHOD === "DELETE";
+    const form = !single && CONTENT_TYPE === 3;
+    let body;
+    if (form) {
+      body = new FormData();
+      for (const [name, value] of ext.formFields) body.append(name, value);
+    } else {
+      body = CONTENT_TYPE === 1 ? Cast.toString(BODY) : JSON.stringify(BODY);
+    }
     return Scratch.fetch(Cast.toString(USER_URL), {
       method: METHOD,
-      headers: single
-        ? {}
-        : {
-            "Content-Type":
-              CONTENT_TYPE === 1 ? "text/plain" : "application/json",
-          },
+      headers: Object.assign(
+        single || form
+          ? {}
+          : {
+              "Content-Type":
+                CONTENT_TYPE === 1 ? "text/plain" : "application/json",
+            },
+        ext.requestHeaders
+      ),
       redirect: single ? "follow" : "follow",
-      body: CONTENT_TYPE === 1 ? Cast.toString(BODY) : JSON.stringify(BODY),
+      body,
     })
       .then((res) => {
+        ext.lastResponseHeaders = res.headers;
+        const copy = RESPONSES_TYPES.some((t) => Cast.toNumber(t) === 11)
+          ? res.clone()
+          : null;
         const responses = [];
         for (let i = 0; i <= RESPONSES_TYPES.length - 1; i++) {
           switch (Cast.toNumber(RESPONSES_TYPES[i])) {
@@ -66,6 +92,14 @@
             case 8:
               responses.push(res.url);
               break;
+            case 10:
+              responses.push(
+                JSON.stringify(Object.fromEntries(res.headers.entries()))
+              );
+              break;
+            case 11:
+              responses.push(copy.blob().then(blobToDataURL));
+              break;
             case 9:
             default:
               responses.push(single ? res.url : Cast.toString(res.bodyUsed));
@@ -88,6 +122,12 @@
   };
 
   class Network {
+    constructor() {
+      this.requestHeaders = {};
+      this.formFields = new Map();
+      this.lastResponseHeaders = new Headers();
+    }
+
     getInfo() {
       return {
         id: "truefantomnetwork",
@@ -276,6 +316,81 @@
           },
           "---",
           {
+            opcode: "set_header_block",
+            blockType: Scratch.BlockType.COMMAND,
+            text: Scratch.translate("set request header [NAME] to [VALUE]"),
+            arguments: {
+              NAME: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: "Accept",
+              },
+              VALUE: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: "application/json",
+              },
+            },
+          },
+          {
+            opcode: "set_headers_json_block",
+            blockType: Scratch.BlockType.COMMAND,
+            text: Scratch.translate("set request headers to json [JSON]"),
+            arguments: {
+              JSON: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: '{"Accept": "application/json"}',
+              },
+            },
+          },
+          {
+            opcode: "clear_headers_block",
+            blockType: Scratch.BlockType.COMMAND,
+            text: Scratch.translate("clear request headers"),
+          },
+          {
+            opcode: "response_header_block",
+            blockType: Scratch.BlockType.REPORTER,
+            text: Scratch.translate("[NAME] from last response headers"),
+            arguments: {
+              NAME: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: "content-type",
+              },
+            },
+          },
+          "---",
+          {
+            opcode: "set_form_block",
+            blockType: Scratch.BlockType.COMMAND,
+            text: Scratch.translate("set [NAME] to [VALUE] in multipart form"),
+            arguments: {
+              NAME: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: "name",
+              },
+              VALUE: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: "value",
+              },
+            },
+          },
+          {
+            opcode: "delete_form_block",
+            blockType: Scratch.BlockType.COMMAND,
+            text: Scratch.translate("delete [NAME] from multipart form"),
+            arguments: {
+              NAME: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: "name",
+              },
+            },
+          },
+          {
+            opcode: "clear_form_block",
+            blockType: Scratch.BlockType.COMMAND,
+            text: Scratch.translate("clear multipart form"),
+          },
+          "---",
+          {
             opcode: "open_link_block",
             blockType: Scratch.BlockType.COMMAND,
             text: Scratch.translate("open [USER_URL] in new tab"),
@@ -340,6 +455,10 @@
                 text: "(2) json",
                 value: "2",
               },
+              {
+                text: Scratch.translate("(3) multipart form"),
+                value: "3",
+              },
             ],
           },
           only_url_response_type: {
@@ -384,6 +503,14 @@
               {
                 text: "(8) url",
                 value: "8",
+              },
+              {
+                text: Scratch.translate("(10) response headers as json"),
+                value: "10",
+              },
+              {
+                text: "(11) data: URL",
+                value: "11",
               },
             ],
           },
@@ -433,6 +560,14 @@
               {
                 text: Scratch.translate("(9) body used?"),
                 value: "9",
+              },
+              {
+                text: Scratch.translate("(10) response headers as json"),
+                value: "10",
+              },
+              {
+                text: "(11) data: URL",
+                value: "11",
               },
             ],
           },
@@ -542,19 +677,57 @@
       }
     }
     get_block(args) {
-      return fetch_url(args, "GET");
+      return fetch_url(args, "GET", this);
     }
     delete_block(args) {
-      return fetch_url(args, "DELETE");
+      return fetch_url(args, "DELETE", this);
     }
     post_block(args) {
-      return fetch_url(args, "POST");
+      return fetch_url(args, "POST", this);
     }
     put_block(args) {
-      return fetch_url(args, "PUT");
+      return fetch_url(args, "PUT", this);
     }
     patch_block(args) {
-      return fetch_url(args, "PATCH");
+      return fetch_url(args, "PATCH", this);
+    }
+    set_header_block({ NAME, VALUE }) {
+      this.requestHeaders[Cast.toString(NAME)] = Cast.toString(VALUE);
+    }
+    set_headers_json_block({ JSON: json }) {
+      let object;
+      // ignore invalid data
+      try {
+        object = JSON.parse(Cast.toString(json));
+      } catch (err) {
+        return;
+      }
+      if (!object || typeof object !== "object" || Array.isArray(object)) {
+        return;
+      }
+      this.requestHeaders = {};
+      for (const name of Object.keys(object)) {
+        this.requestHeaders[name] = Cast.toString(object[name]);
+      }
+    }
+    clear_headers_block() {
+      this.requestHeaders = {};
+    }
+    response_header_block({ NAME }) {
+      try {
+        return this.lastResponseHeaders.get(Cast.toString(NAME)) ?? "";
+      } catch (err) {
+        return "";
+      }
+    }
+    set_form_block({ NAME, VALUE }) {
+      this.formFields.set(Cast.toString(NAME), Cast.toString(VALUE));
+    }
+    delete_form_block({ NAME }) {
+      this.formFields.delete(Cast.toString(NAME));
+    }
+    clear_form_block() {
+      this.formFields.clear();
     }
     open_link_block({ USER_URL }) {
       Scratch.openWindow(USER_URL);

@@ -1,8 +1,9 @@
 // Name: Encoding
 // ID: Encoding
-// Description: Encode and decode strings into their unicode numbers, base 64, or URLs.
+// Description: Encode and decode strings into their unicode numbers, base 64, URLs, or numbers for cloud variables.
 // By: -SIPC-
-// License: MIT
+// By: GarboMuffin
+// License: MIT AND MPL-2.0
 
 (function (Scratch) {
   "use strict";
@@ -149,7 +150,7 @@
      */
     function binlMD5(x, len) {
       /* append padding */
-      x[len >> 5] |= 0x80 << len % 32;
+      x[len >> 5] |= 0x80 << (len % 32);
       x[(((len + 64) >>> 9) << 4) + 14] = len;
 
       var i;
@@ -255,7 +256,7 @@
       var output = "";
       var length32 = input.length * 32;
       for (i = 0; i < length32; i += 8) {
-        output += String.fromCharCode((input[i >> 5] >>> i % 32) & 0xff);
+        output += String.fromCharCode((input[i >> 5] >>> (i % 32)) & 0xff);
       }
       return output;
     }
@@ -276,7 +277,7 @@
       }
       var length8 = input.length * 8;
       for (i = 0; i < length8; i += 8) {
-        output[i >> 5] |= (input.charCodeAt(i / 8) & 0xff) << i % 32;
+        output[i >> 5] |= (input.charCodeAt(i / 8) & 0xff) << (i % 32);
       }
       return output;
     }
@@ -408,6 +409,143 @@
 
     return md5;
   })();
+
+  // The "Numbers" encoding below is Numerical Encoding V2 by GarboMuffin (MPL-2.0).
+  // It stays under MPL-2.0; the rest of this file is MIT.
+  const numTextEncoder = new TextEncoder();
+  const numTextDecoder = new TextDecoder();
+
+  /**
+   * @param {Uint8Array} bytes
+   * @returns {string}
+   */
+  const encodeNumbersBinary = (bytes) => {
+    // Pre-allocating buffer seems to be much faster than string concatenation
+    const buffer = new Uint8Array(Math.ceil((bytes.length * 8) / 3));
+    let ptr = 0;
+
+    for (var i = 0; i <= bytes.length - 3; i += 3) {
+      // AAAAAAAA BBBBBBBB CCCCCCCC
+      // 11122233 34445556 66777888
+      const a = bytes[i];
+      const b = bytes[i + 1];
+      const c = bytes[i + 2];
+      buffer[ptr++] = 49 + (a >> 5);
+      buffer[ptr++] = 49 + ((a >> 2) & 0b111);
+      buffer[ptr++] = 49 + (((a & 0b11) << 1) | (b >> 7));
+      buffer[ptr++] = 49 + ((b >> 4) & 0b111);
+      buffer[ptr++] = 49 + ((b >> 1) & 0b111);
+      buffer[ptr++] = 49 + (((b & 0b1) << 2) | (c >> 6));
+      buffer[ptr++] = 49 + ((c >> 3) & 0b111);
+      buffer[ptr++] = 49 + (c & 0b111);
+    }
+
+    switch (bytes.length - i) {
+      case 1: {
+        // AAAAAAAA
+        // 11122233 3
+        const a = bytes[i];
+        buffer[ptr++] = 49 + (a >> 5);
+        buffer[ptr++] = 49 + ((a >> 2) & 0b111);
+        buffer[ptr++] = 49 + ((a & 0b11) << 1);
+        break;
+      }
+
+      case 2: {
+        // AAAAAAAA BBBBBBBB
+        // 11122233 34445556 66
+        const a = bytes[i];
+        const b = bytes[i + 1];
+        buffer[ptr++] = 49 + (a >> 5);
+        buffer[ptr++] = 49 + ((a >> 2) & 0b111);
+        buffer[ptr++] = 49 + (((a & 0b11) << 1) | (b >> 7));
+        buffer[ptr++] = 49 + ((b >> 4) & 0b111);
+        buffer[ptr++] = 49 + ((b >> 1) & 0b111);
+        buffer[ptr++] = 49 + ((b & 0b1) << 2);
+        break;
+      }
+    }
+
+    return numTextDecoder.decode(buffer);
+  };
+
+  /**
+   * @param {string} string
+   * @returns {Uint8Array}
+   */
+  const decodeNumbersBinary = (string) => {
+    const encodedBytes = Math.floor((string.length * 3) / 8);
+    const result = new Uint8Array(encodedBytes);
+    let ptr = 0;
+
+    for (var i = 0; i <= string.length - 8; i += 8) {
+      // AAA BBB CCC DDD EEE FFF GGG HHH
+      // 111 111 112 222 222 233 333 333
+      const a = string.charCodeAt(i) - 49;
+      const b = string.charCodeAt(i + 1) - 49;
+      const c = string.charCodeAt(i + 2) - 49;
+      const d = string.charCodeAt(i + 3) - 49;
+      const e = string.charCodeAt(i + 4) - 49;
+      const f = string.charCodeAt(i + 5) - 49;
+      const g = string.charCodeAt(i + 6) - 49;
+      const h = string.charCodeAt(i + 7) - 49;
+      result[ptr++] = (a << 5) | (b << 2) | (c >> 1);
+      result[ptr++] = ((c & 0b1) << 7) | (d << 4) | (e << 1) | (f >> 2);
+      result[ptr++] = ((f & 0b11) << 6) | (g << 3) | h;
+    }
+
+    switch (encodedBytes - ptr) {
+      case 1: {
+        // AAA BBB CCC
+        // 111 111 11
+        const a = string.charCodeAt(i) - 49;
+        const b = string.charCodeAt(i + 1) - 49;
+        const c = string.charCodeAt(i + 2) - 49;
+        result[ptr] = (a << 5) | (b << 2) | (c >> 1);
+        break;
+      }
+
+      case 2: {
+        // AAA BBB CCC DDD EEE FFF
+        // 111 111 112 222 222 2
+        const a = string.charCodeAt(i) - 49;
+        const b = string.charCodeAt(i + 1) - 49;
+        const c = string.charCodeAt(i + 2) - 49;
+        const d = string.charCodeAt(i + 3) - 49;
+        const e = string.charCodeAt(i + 4) - 49;
+        const f = string.charCodeAt(i + 5) - 49;
+        result[ptr++] = (a << 5) | (b << 2) | (c >> 1);
+        result[ptr] = ((c & 0b1) << 7) | (d << 4) | (e << 1) | (f >> 2);
+        break;
+      }
+    }
+
+    return result;
+  };
+
+  /**
+   * @param {string} text
+   * @returns {string}
+   */
+  const encodeNumbers = (text) =>
+    encodeNumbersBinary(numTextEncoder.encode(text));
+
+  /**
+   * @param {string} text
+   * @returns {string}
+   */
+  const decodeNumbers = (text) => {
+    // All characters must be in range [1, 8]
+    for (let i = 0; i < text.length; i++) {
+      const ch = text.charCodeAt(i);
+      if (ch < 49 || ch > 56) {
+        return "";
+      }
+    }
+    return numTextDecoder.decode(decodeNumbersBinary(text));
+  };
+
+  // End of the MPL-2.0 part.
 
   class Encoding {
     getInfo() {
@@ -559,6 +697,10 @@
                 value: "Base64",
               },
               "URL",
+              {
+                text: Scratch.translate("Numbers (cloud variables)"),
+                value: "Numbers",
+              },
             ],
           },
           hash: {
@@ -575,6 +717,8 @@
           return this._btoa(string);
         case "URL":
           return encodeURIComponent(string);
+        case "Numbers":
+          return encodeNumbers(string);
       }
       return "";
     }
@@ -590,6 +734,8 @@
           }
         case "URL":
           return decodeURIComponent(string);
+        case "Numbers":
+          return decodeNumbers(string);
       }
       return "";
     }

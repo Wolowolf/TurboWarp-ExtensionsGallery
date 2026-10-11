@@ -75,9 +75,6 @@ All images in this folder are licensed under the [GNU General Public License ver
 ## Lily/lmsutils.svg
  - Created by [@HamsterCreativity](https://scratch.mit.edu/users/HamsterCreativity/) in https://github.com/TurboWarp/extensions/issues/90#issuecomment-1694410464.
 
-## 0832/rxFS2.svg
- - Created by [@BlueDome77](https://github.com/BlueDome77) in https://github.com/TurboWarp/extensions/issues/90#issuecomment-1604175329.
-
 ## NOname-awa/math-and-string.svg
  - Created by @NOname in https://github.com/TurboWarp/extensions/pull/316.
 
@@ -89,11 +86,6 @@ All images in this folder are licensed under the [GNU General Public License ver
 
 ## TheShovel/CanvasEffects.svg
  - Created by @Pizzalover4783 in https://github.com/TurboWarp/extensions/issues/90#issuecomment-1526886264.
-
-## numerical-encoding-2.svg
- - Created by [@NexusKitten](https://scratch.mit.edu/users/namelesscat/).
- - Silkscreen font used under [Open Font License](https://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL)
- - Dango based on dango from [Twemoji](https://twemoji.twitter.com/) under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 
 ## NOname-awa/graphics2d.svg
  - Created by @Pizzalover4783 in https://github.com/TurboWarp/extensions/issues/90#issuecomment-1550426448.
@@ -151,9 +143,6 @@ All images in this folder are licensed under the [GNU General Public License ver
 ## clipboard.svg
  - Created by [@Skyhigh173](https://github.com/Skyhigh173) in https://github.com/TurboWarp/extensions/issues/90#issuecomment-1751679667
 
-## godslayerakp/http.svg
- - Created by [@wiktorlaskowski](https://github.com/wiktorlaskowski) in https://github.com/TurboWarp/extensions/issues/90#issuecomment-1636912111
-
 ## veggiecan/LongmanDictionary.svg
  - Created by [@xTvii](https://github.com/xTvii) in https://github.com/TurboWarp/extensions/issues/1079#issuecomment-1749060196
  - The ship is based on [this](https://www.ldoceonline.com/external/images/logo_home_smartphone.svg?version=1.2.61) logo from the [ldoceonline](https://www.ldoceonline.com/) website
@@ -194,6 +183,3 @@ All images in this folder are licensed under the [GNU General Public License ver
 
 ## CubesterYT/KeySimulation.svg
  - Created by [@SharkPool-SP](https://github.com/SharkPool-SP/)
-
-## DogeisCut/FormatNumbers.png
- - Created by [@Dillon](https://github.com/DillonRGaming)
