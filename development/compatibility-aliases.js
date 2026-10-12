@@ -3,7 +3,6 @@ const aliases = {
   "/LukeManiaStudios/ClonesPlus.js": "/Lily/ClonesPlus.js",
   "/LukeManiaStudios/lmsutils.js": "/Lily/lmsutils.js",
   "/LukeManiaStudios/LooksPlus.js": "/Lily/LooksPlus.js",
-  "/LukeManiaStudios/McUtils.js": "/Lily/McUtils.js",
 };
 
 export default aliases;

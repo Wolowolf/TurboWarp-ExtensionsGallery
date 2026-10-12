@@ -52,6 +52,5 @@
   "veggiecan/LongmanDictionary",
   "steamworks",
   "itchio",
-  "Medericoder/textcase",
-  "Lily/McUtils" // McUtils should always be the last item.
+  "Medericoder/textcase"
 ]
