@@ -11,8 +11,6 @@
 
   const Cast = Scratch.Cast;
 
-  let hideLegacyBlocks = true;
-
   var vars = {};
   vars["variables"] = Object.create(null);
 
@@ -338,75 +336,6 @@
 
           "---",
 
-          {
-            opcode: "stringReporter",
-            blockType: Scratch.BlockType.REPORTER,
-            // eslint-disable-next-line extension/should-translate
-            text: "[STRING]",
-            disableMonitor: true,
-            hideFromPalette: hideLegacyBlocks,
-            arguments: {
-              STRING: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: "apple",
-              },
-            },
-          },
-          {
-            opcode: "colourHex",
-            blockType: Scratch.BlockType.REPORTER,
-            text: Scratch.translate("color [COLOUR]"),
-            hideFromPalette: hideLegacyBlocks,
-            arguments: {
-              COLOUR: {
-                type: Scratch.ArgumentType.COLOR,
-                defaultValue: "#0088ff",
-              },
-            },
-          },
-          {
-            opcode: "angleReporter",
-            blockType: Scratch.BlockType.REPORTER,
-            text: Scratch.translate("angle [ANGLE]"),
-            hideFromPalette: hideLegacyBlocks,
-            arguments: {
-              ANGLE: {
-                type: Scratch.ArgumentType.ANGLE,
-                defaultValue: "90",
-              },
-            },
-          },
-          {
-            opcode: "matrixReporter",
-            blockType: Scratch.BlockType.REPORTER,
-            text: Scratch.translate("matrix [MATRIX]"),
-            hideFromPalette: hideLegacyBlocks,
-            arguments: {
-              MATRIX: {
-                type: Scratch.ArgumentType.MATRIX,
-                defaultValue: "0101001010000001000101110",
-              },
-            },
-          },
-          {
-            opcode: "noteReporter",
-            blockType: Scratch.BlockType.REPORTER,
-            text: Scratch.translate("note [NOTE]"),
-            hideFromPalette: hideLegacyBlocks,
-            arguments: {
-              NOTE: {
-                type: Scratch.ArgumentType.NOTE,
-                defaultValue: "",
-              },
-            },
-          },
-          {
-            opcode: "newlineCharacter",
-            blockType: Scratch.BlockType.REPORTER,
-            text: Scratch.translate("newline character"),
-            hideFromPalette: hideLegacyBlocks,
-            disableMonitor: true,
-          },
 
           "---",
 
@@ -492,40 +421,6 @@
 
           "---",
 
-          {
-            opcode: "encodeToBlock",
-            blockType: Scratch.BlockType.REPORTER,
-            text: Scratch.translate("encode [STRING] to [DROPDOWN]"),
-            disableMonitor: true,
-            hideFromPalette: hideLegacyBlocks,
-            arguments: {
-              STRING: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: "",
-              },
-              DROPDOWN: {
-                type: Scratch.ArgumentType.STRING,
-                menu: "conversionMenu",
-              },
-            },
-          },
-          {
-            opcode: "decodeFromBlock",
-            blockType: Scratch.BlockType.REPORTER,
-            text: Scratch.translate("decode [STRING] from [DROPDOWN]"),
-            disableMonitor: true,
-            hideFromPalette: hideLegacyBlocks,
-            arguments: {
-              STRING: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: "",
-              },
-              DROPDOWN: {
-                type: Scratch.ArgumentType.STRING,
-                menu: "conversionMenu",
-              },
-            },
-          },
 
           "---",
 
@@ -611,206 +506,21 @@
 
           "---",
 
-          {
-            opcode: "setVariableTo",
-            blockType: Scratch.BlockType.COMMAND,
-            text: Scratch.translate("set variable [INPUTA] to [INPUTB]"),
-            hideFromPalette: hideLegacyBlocks,
-            arguments: {
-              INPUTA: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: "my variable",
-              },
-              INPUTB: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: "0",
-              },
-            },
-          },
-          {
-            opcode: "changeVariableBy",
-            blockType: Scratch.BlockType.COMMAND,
-            text: Scratch.translate("change variable [INPUTA] by [INPUTB]"),
-            hideFromPalette: hideLegacyBlocks,
-            arguments: {
-              INPUTA: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: "my variable",
-              },
-              INPUTB: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: "1",
-              },
-            },
-          },
-          {
-            opcode: "getVariable",
-            blockType: Scratch.BlockType.REPORTER,
-            text: Scratch.translate("variable [INPUT]"),
-            disableMonitor: true,
-            hideFromPalette: hideLegacyBlocks,
-            arguments: {
-              INPUT: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: "my variable",
-              },
-            },
-          },
-          {
-            opcode: "deleteVariable",
-            blockType: Scratch.BlockType.COMMAND,
-            text: Scratch.translate("delete variable [INPUT]"),
-            hideFromPalette: hideLegacyBlocks,
-            arguments: {
-              INPUT: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: "my variable",
-              },
-            },
-          },
-          {
-            opcode: "deleteAllVariables",
-            blockType: Scratch.BlockType.COMMAND,
-            text: Scratch.translate("delete all variables"),
-            hideFromPalette: hideLegacyBlocks,
-          },
-          {
-            opcode: "listVariables",
-            blockType: Scratch.BlockType.REPORTER,
-            text: Scratch.translate("list active variables"),
-            disableMonitor: true,
-            hideFromPalette: hideLegacyBlocks,
-          },
 
           "---",
 
-          {
-            opcode: "greenFlag",
-            blockType: Scratch.BlockType.COMMAND,
-            text: Scratch.translate("green flag"),
-            hideFromPalette: hideLegacyBlocks,
-          },
-          {
-            opcode: "setUsername",
-            blockType: Scratch.BlockType.COMMAND,
-            text: Scratch.translate("set username to [INPUT]"),
-            hideFromPalette: hideLegacyBlocks,
-            arguments: {
-              INPUT: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: "LilyMakesThings",
-              },
-            },
-          },
 
           "---",
 
-          {
-            opcode: "setSpriteSVG",
-            blockType: Scratch.BlockType.COMMAND,
-            text: Scratch.translate(
-              "replace SVG data for costume [INPUTA] with [INPUTB]"
-            ),
-            hideFromPalette: hideLegacyBlocks,
-            arguments: {
-              INPUTA: {
-                type: Scratch.ArgumentType.NUMBER,
-                defaultValue: "1",
-              },
-              INPUTB: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: "",
-              },
-            },
-          },
 
           "---",
 
-          {
-            opcode: "alertBlock",
-            blockType: Scratch.BlockType.COMMAND,
-            text: Scratch.translate("alert [STRING]"),
-            hideFromPalette: hideLegacyBlocks,
-            arguments: {
-              STRING: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: "A red spy is in the base!",
-              },
-            },
-          },
-          {
-            opcode: "inputPromptBlock",
-            blockType: Scratch.BlockType.REPORTER,
-            text: Scratch.translate("prompt [STRING]"),
-            hideFromPalette: hideLegacyBlocks,
-            disableMonitor: true,
-            arguments: {
-              STRING: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: "The code is 1, 1, 1.. err... 1!",
-              },
-            },
-          },
-          {
-            opcode: "confirmationBlock",
-            blockType: Scratch.BlockType.BOOLEAN,
-            text: Scratch.translate("confirm [STRING]"),
-            hideFromPalette: hideLegacyBlocks,
-            arguments: {
-              STRING: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: "Are you the red spy?",
-              },
-            },
-          },
 
           "---",
 
-          {
-            opcode: "goToLink",
-            blockType: Scratch.BlockType.COMMAND,
-            text: Scratch.translate("open link [INPUT] in new tab"),
-            hideFromPalette: hideLegacyBlocks,
-            arguments: {
-              INPUT: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: "",
-              },
-            },
-          },
-          {
-            opcode: "redirectToLink",
-            blockType: Scratch.BlockType.COMMAND,
-            text: Scratch.translate("redirect to link [INPUT]"),
-            hideFromPalette: hideLegacyBlocks,
-            arguments: {
-              INPUT: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: "",
-              },
-            },
-          },
 
           "---",
 
-          {
-            opcode: "setClipboard",
-            blockType: Scratch.BlockType.COMMAND,
-            text: Scratch.translate("set [STRING] to clipboard"),
-            hideFromPalette: hideLegacyBlocks,
-            arguments: {
-              STRING: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: "apple",
-              },
-            },
-          },
-          {
-            opcode: "readClipboard",
-            blockType: Scratch.BlockType.REPORTER,
-            text: Scratch.translate("clipboard"),
-            hideFromPalette: hideLegacyBlocks,
-          },
 
           "---",
 
@@ -861,106 +571,14 @@
 
           "---",
 
-          {
-            opcode: "consoleLog",
-            blockType: Scratch.BlockType.COMMAND,
-            text: Scratch.translate("console [DROPDOWN] [INPUT]"),
-            disableMonitor: true,
-            hideFromPalette: hideLegacyBlocks,
-            arguments: {
-              DROPDOWN: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: "log",
-                menu: "consoleLogMenu",
-              },
-              INPUT: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: "Apple",
-              },
-            },
-          },
-          {
-            opcode: "clearConsole",
-            blockType: Scratch.BlockType.COMMAND,
-            text: Scratch.translate("clear console"),
-            hideFromPalette: hideLegacyBlocks,
-          },
 
           "---",
 
           /* eslint-disable extension/should-translate */
-          {
-            opcode: "commentHat",
-            blockType: Scratch.BlockType.HAT,
-            text: "// [STRING]",
-            hideFromPalette: hideLegacyBlocks,
-            arguments: {
-              STRING: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: "comment",
-              },
-            },
-          },
-          {
-            opcode: "commentCommand",
-            blockType: Scratch.BlockType.COMMAND,
-            text: "// [STRING]",
-            hideFromPalette: hideLegacyBlocks,
-            arguments: {
-              STRING: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: "comment",
-              },
-            },
-          },
-          {
-            opcode: "commentString",
-            blockType: Scratch.BlockType.REPORTER,
-            text: "// [INPUTA] [INPUTB]",
-            disableMonitor: true,
-            hideFromPalette: hideLegacyBlocks,
-            arguments: {
-              INPUTA: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: "comment",
-              },
-              INPUTB: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: "input",
-              },
-            },
-          },
-          {
-            opcode: "commentBool",
-            blockType: Scratch.BlockType.BOOLEAN,
-            text: "// [INPUTA] [INPUTB]",
-            hideFromPalette: hideLegacyBlocks,
-            arguments: {
-              INPUTA: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: "comment",
-              },
-              INPUTB: {
-                type: Scratch.ArgumentType.BOOLEAN,
-              },
-            },
-          },
           /* eslint-enable extension/should-translate */
 
           "---",
 
-          {
-            func: "showLegacyBlocks",
-            blockType: Scratch.BlockType.BUTTON,
-            text: Scratch.translate("Show Legacy Blocks"),
-            hideFromPalette: !hideLegacyBlocks,
-          },
-          {
-            func: "hideLegacyBlocks",
-            blockType: Scratch.BlockType.BUTTON,
-            text: Scratch.translate("Hide Legacy Blocks"),
-            hideFromPalette: hideLegacyBlocks,
-          },
         ],
         menus: {
           conversionMenu: {
@@ -1094,25 +712,6 @@
       };
     }
 
-    showLegacyBlocks() {
-      if (
-        confirm(
-          Scratch.translate(
-            "Are you sure you want to show legacy blocks? \n \n These blocks were removed because they were buggy or implemented better in other extensions."
-          )
-        )
-      ) {
-        hideLegacyBlocks = false;
-        Scratch.vm.extensionManager.refreshBlocks();
-      } else {
-        //
-      }
-    }
-
-    hideLegacyBlocks() {
-      hideLegacyBlocks = true;
-      Scratch.vm.extensionManager.refreshBlocks();
-    }
 
     whenBooleanHat(args) {
       return Cast.toBoolean(args.INPUT);
@@ -1222,29 +821,11 @@
       return !(args.INPUTA && args.INPUTB);
     }
 
-    stringReporter(args) {
-      return Cast.toString(args.STRING);
-    }
 
-    colourHex(args) {
-      return args.COLOUR;
-    }
 
-    angleReporter(args) {
-      return Cast.toNumber(args.ANGLE);
-    }
 
-    matrixReporter(args) {
-      return args.MATRIX;
-    }
 
-    noteReporter(args) {
-      return args.NOTE;
-    }
 
-    newlineCharacter() {
-      return "\n";
-    }
 
     equalsExactly(args) {
       // Intentionally not using Cast
@@ -1273,32 +854,7 @@
       return false;
     }
 
-    encodeToBlock(args) {
-      if (args.STRING === "") return "";
-      if (args.DROPDOWN === "base64") return btoa(Cast.toString(args.STRING));
-      if (args.DROPDOWN === "binary") {
-        return Cast.toString(args.STRING)
-          .split("")
-          .map(function (char) {
-            return char.charCodeAt(0).toString(2);
-          })
-          .join(" ");
-      }
-      return "";
-    }
 
-    decodeFromBlock(args) {
-      if (args.STRING === "") return "";
-      if (args.DROPDOWN === "base64") return atob(Cast.toString(args.STRING));
-      if (args.DROPDOWN === "binary") {
-        var output = Cast.toString(args.STRING);
-        return output
-          .split(" ")
-          .map((x) => (x = String.fromCharCode(parseInt(x, 2))))
-          .join("");
-      }
-      return "";
-    }
 
     negativeReporter(args) {
       return Cast.toNumber(args.INPUT) * -1;
@@ -1330,94 +886,21 @@
       return Math.min(Math.max(input1, input2), input3);
     }
 
-    setVariableTo(args) {
-      vars["variables"][args.INPUTA] = args.INPUTB;
-    }
 
-    changeVariableBy(args) {
-      if (args.INPUTA in vars["variables"]) {
-        var prev = vars["variables"][args.INPUTA];
-        var next = args.INPUTB;
-        vars["variables"][args.INPUTA] = prev + next;
-      } else {
-        vars["variables"][args.INPUTA] = args.INPUTB;
-      }
-    }
 
-    getVariable(args) {
-      if (args.INPUT in vars["variables"]) return vars["variables"][args.INPUT];
-      return "";
-    }
 
-    deleteVariable(args) {
-      Reflect.deleteProperty(vars["variables"], args.INPUT);
-    }
 
-    deleteAllVariables() {
-      Reflect.deleteProperty(vars, "variables");
-      vars["variables"] = {};
-    }
 
-    listVariables() {
-      return JSON.stringify(Object.keys(vars["variables"]));
-    }
 
-    greenFlag(args, util) {
-      util.runtime.greenFlag();
-    }
 
-    setUsername(args, util) {
-      util.runtime.ioDevices.userData._username = args.INPUT;
-    }
 
-    setSpriteSVG(args, util) {
-      try {
-        const skinId = util.target.sprite.costumes[args.INPUTA - 1].skinId;
-        const renderer = Scratch.vm.runtime.renderer;
-        renderer.updateSVGSkin(skinId, Cast.toString(args.INPUTB));
-        renderer._allSkins[skinId].differsFromAsset = true;
-      } catch (error) {
-        console.error(error);
-      }
-    }
 
-    alertBlock(args) {
-      alert(args.STRING);
-    }
 
-    inputPromptBlock(args) {
-      return prompt(args.STRING);
-    }
 
-    confirmationBlock(args) {
-      return confirm(args.STRING);
-    }
 
-    goToLink(args) {
-      Scratch.openWindow(args.INPUT);
-    }
 
-    redirectToLink(args) {
-      Scratch.redirect(args.INPUT);
-    }
 
-    setClipboard(args) {
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(args.STRING);
-      }
-    }
 
-    readClipboard(args) {
-      if (navigator.clipboard && navigator.clipboard.readText) {
-        return Scratch.canReadClipboard().then((allowed) => {
-          if (allowed) {
-            return navigator.clipboard.readText();
-          }
-          return "";
-        });
-      }
-      return "";
-    }
 
     isUserMobile(args, util) {
       return (
@@ -1461,35 +944,11 @@
       }
     }
 
-    consoleLog(args) {
-      if (args.DROPDOWN === "log") {
-        console.log(args.INPUT);
-      } else if (args.DROPDOWN === "error") {
-        console.error(args.INPUT);
-      } else if (args.DROPDOWN === "warn") {
-        console.warn(args.INPUT);
-      }
-    }
 
-    clearConsole() {
-      console.clear();
-    }
 
-    commentHat() {
-      // no-op
-    }
 
-    commentCommand() {
-      // no-op
-    }
 
-    commentString(args) {
-      return args.INPUTB;
-    }
 
-    commentBool(args) {
-      return args.INPUTB || false;
-    }
   }
   Scratch.extensions.register(new LMSUtils());
 })(Scratch);

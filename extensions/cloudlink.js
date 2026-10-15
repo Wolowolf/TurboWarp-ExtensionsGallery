@@ -83,9 +83,6 @@
 
   // Store extension state
   var clVars = {
-    // Editor-specific variable for hiding old, legacy-support blocks.
-    hideCLDeprecatedBlocks: true,
-
     // WebSocket object.
     socket: null,
 
@@ -882,23 +879,8 @@
             text: Scratch.translate("my username"),
           },
 
-          {
-            opcode: "returnUsernameData",
-            blockType: Scratch.BlockType.REPORTER,
-            hideFromPalette: clVars.hideCLDeprecatedBlocks,
-            text: Scratch.translate(
-              "(OLD - DO NOT USE IN NEW PROJECTS) my username"
-            ),
-          },
 
           "---",
-
-          {
-            hideFromPalette: true,
-            opcode: "returnVersionData",
-            blockType: Scratch.BlockType.REPORTER,
-            text: Scratch.translate("extension version"),
-          },
 
           {
             opcode: "returnServerVersion",
@@ -946,33 +928,7 @@
             },
           },
 
-          {
-            opcode: "readQueueSize",
-            blockType: Scratch.BlockType.REPORTER,
-            hideFromPalette: clVars.hideCLDeprecatedBlocks,
-            text: Scratch.translate("size of queue for [TYPE]"),
-            arguments: {
-              TYPE: {
-                type: Scratch.ArgumentType.STRING,
-                menu: "allmenu",
-                defaultValue: "All data",
-              },
-            },
-          },
 
-          {
-            opcode: "readQueueData",
-            blockType: Scratch.BlockType.REPORTER,
-            hideFromPalette: clVars.hideCLDeprecatedBlocks,
-            text: Scratch.translate("packet queue for [TYPE]"),
-            arguments: {
-              TYPE: {
-                type: Scratch.ArgumentType.STRING,
-                menu: "allmenu",
-                defaultValue: "All data",
-              },
-            },
-          },
 
           "---",
 
@@ -995,109 +951,13 @@
 
           "---",
 
-          {
-            opcode: "parseJSON",
-            blockType: Scratch.BlockType.REPORTER,
-            hideFromPalette: clVars.hideCLDeprecatedBlocks,
-            text: Scratch.translate("[PATH] of [JSON_STRING]"),
-            arguments: {
-              PATH: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: "fruit/apples",
-              },
-              JSON_STRING: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue:
-                  '{"fruit": {"apples": 2, "bananas": 3}, "total_fruit": 5}',
-              },
-            },
-          },
 
-          {
-            opcode: "getFromJSONArray",
-            blockType: Scratch.BlockType.REPORTER,
-            hideFromPalette: clVars.hideCLDeprecatedBlocks,
-            text: Scratch.translate("[NUM] from JSON array [ARRAY]"),
-            arguments: {
-              NUM: {
-                type: Scratch.ArgumentType.NUMBER,
-                defaultValue: 0,
-              },
-              ARRAY: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: '["foo","bar"]',
-              },
-            },
-          },
 
-          {
-            opcode: "makeJSON",
-            blockType: Scratch.BlockType.REPORTER,
-            hideFromPalette: clVars.hideCLDeprecatedBlocks,
-            text: Scratch.translate("convert [toBeJSONified] to JSON"),
-            arguments: {
-              toBeJSONified: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: '{"test": true}',
-              },
-            },
-          },
 
-          {
-            opcode: "isValidJSON",
-            blockType: Scratch.BlockType.BOOLEAN,
-            hideFromPalette: clVars.hideCLDeprecatedBlocks,
-            text: Scratch.translate("is [JSON_STRING] valid JSON?"),
-            arguments: {
-              JSON_STRING: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue:
-                  '{"fruit": {"apples": 2, "bananas": 3}, "total_fruit": 5}',
-              },
-            },
-          },
 
           "---",
 
-          {
-            opcode: "fetchURL",
-            blockType: Scratch.BlockType.REPORTER,
-            hideFromPalette: clVars.hideCLDeprecatedBlocks,
-            text: Scratch.translate("fetch data from URL [url]"),
-            arguments: {
-              url: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: "https://extensions.turbowarp.org/hello.txt",
-              },
-            },
-          },
 
-          {
-            opcode: "requestURL",
-            blockType: Scratch.BlockType.REPORTER,
-            hideFromPalette: clVars.hideCLDeprecatedBlocks,
-            text: Scratch.translate(
-              "send request with method [method] for URL [url] with data [data] and headers [headers]"
-            ),
-            arguments: {
-              method: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: "GET",
-              },
-              url: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: "https://extensions.turbowarp.org/hello.txt",
-              },
-              data: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: "{}",
-              },
-              headers: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: "{}",
-              },
-            },
-          },
 
           "---",
 
@@ -1412,43 +1272,7 @@
 
           "---",
 
-          {
-            opcode: "runCMDnoID",
-            blockType: Scratch.BlockType.COMMAND,
-            hideFromPalette: clVars.hideCLDeprecatedBlocks,
-            text: Scratch.translate("send command without ID [CMD] [DATA]"),
-            arguments: {
-              CMD: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: Scratch.translate("direct"),
-              },
-              DATA: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: Scratch.translate("val"),
-              },
-            },
-          },
 
-          {
-            opcode: "runCMD",
-            blockType: Scratch.BlockType.COMMAND,
-            hideFromPalette: clVars.hideCLDeprecatedBlocks,
-            text: Scratch.translate("send command [CMD] [ID] [DATA]"),
-            arguments: {
-              CMD: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: Scratch.translate("direct"),
-              },
-              ID: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: Scratch.translate("id"),
-              },
-              DATA: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: Scratch.translate("val"),
-              },
-            },
-          },
 
           "---",
 
@@ -1580,19 +1404,7 @@
 
           "---",
 
-          {
-            func: "showOldBlocks",
-            blockType: Scratch.BlockType.BUTTON,
-            text: Scratch.translate("Show old blocks"),
-            hideFromPalette: !clVars.hideCLDeprecatedBlocks,
-          },
 
-          {
-            func: "hideOldBlocks",
-            blockType: Scratch.BlockType.BUTTON,
-            text: Scratch.translate("Hide old blocks"),
-            hideFromPalette: clVars.hideCLDeprecatedBlocks,
-          },
 
           "---",
         ],
@@ -1664,22 +1476,8 @@
     }
 
     // Credit to LilyMakesThings' "Lily's toolbox" for this feature.
-    showOldBlocks() {
-      if (
-        confirm(
-          "Do you want to display old blocks?\n\nThese blocks are not recommended for use in newer CloudLink projects as they are deprecated or have better implementation in other extensions."
-        )
-      ) {
-        clVars.hideCLDeprecatedBlocks = false;
-        vm.extensionManager.refreshBlocks();
-      }
-    }
 
     // Credit to LilyMakesThings' "Lily's toolbox" for this feature.
-    hideOldBlocks() {
-      clVars.hideCLDeprecatedBlocks = true;
-      vm.extensionManager.refreshBlocks();
-    }
 
     // Reporter - Returns gmsg values.
     returnGlobalData() {
@@ -1717,18 +1515,10 @@
     }
 
     // Reporter - (OLD) Returns currently set username (returns user object to retain compatibility with old projects).
-    returnUsernameData() {
-      return makeValueScratchSafe(clVars.myUserObject);
-    }
 
     // Reporter - Returns the reported user object of the client (Snowflake ID, UUID, Username) - Intended replacement for the old username reporter block.
     returnUserObject() {
       return makeValueScratchSafe(clVars.myUserObject);
-    }
-
-    // Reporter - Returns current client version.
-    returnVersionData() {
-      return generateVersionString();
     }
 
     // Reporter - Returns reported server version.
@@ -1851,63 +1641,9 @@
 
     // Reporter - Returns the size of the message queue.
     // TYPE - String (menu allmenu)
-    readQueueSize(args) {
-      switch (args.TYPE) {
-        case "Global data":
-          return clVars.gmsg.queue.length;
-        case "Private data":
-          return clVars.pmsg.queue.length;
-        case "Direct data":
-          return clVars.direct.queue.length;
-        case "Status code":
-          return clVars.statuscode.queue.length;
-        case "Global variables":
-          return clVars.gvar.queue.length;
-        case "Private variables":
-          return clVars.pvar.queue.length;
-        case "All data":
-          return (
-            clVars.gmsg.queue.length +
-            clVars.pmsg.queue.length +
-            clVars.direct.queue.length +
-            clVars.statuscode.queue.length +
-            clVars.gvar.queue.length +
-            clVars.pvar.queue.length
-          );
-        default:
-          return 0;
-      }
-    }
 
     // Reporter - Returns all values of the message queue.
     // TYPE - String (menu allmenu)
-    readQueueData(args) {
-      switch (args.TYPE) {
-        case "Global data":
-          return makeValueScratchSafe(clVars.gmsg.queue);
-        case "Private data":
-          return makeValueScratchSafe(clVars.pmsg.queue);
-        case "Direct data":
-          return makeValueScratchSafe(clVars.direct.queue);
-        case "Status code":
-          return makeValueScratchSafe(clVars.statuscode.queue);
-        case "Global variables":
-          return makeValueScratchSafe(clVars.gvar.queue);
-        case "Private variables":
-          return makeValueScratchSafe(clVars.pvar.queue);
-        case "All data":
-          return makeValueScratchSafe({
-            gmsg: clVars.gmsg.queue,
-            pmsg: clVars.pmsg.queue,
-            direct: clVars.direct.queue,
-            statuscode: clVars.statuscode.queue,
-            gvar: clVars.gvar.queue,
-            pvar: clVars.pvar.queue,
-          });
-        default:
-          return "";
-      }
-    }
 
     // Reporter - Returns a gvar/pvar value.
     // TYPE - String (menu varmenu), VAR - String (variable name)
@@ -1942,80 +1678,15 @@
 
     // Reporter - Gets a JSON key value from a JSON string.
     // PATH - String, JSON_STRING - String
-    parseJSON(args) {
-      try {
-        const path = args.PATH.toString()
-          .split("/")
-          .map((prop) => decodeURIComponent(prop));
-        if (path[0] === "") path.splice(0, 1);
-        if (path[path.length - 1] === "") path.splice(-1, 1);
-        let json;
-        try {
-          json = JSON.parse(" " + args.JSON_STRING);
-        } catch (e) {
-          return e.message;
-        }
-        path.forEach((prop) => (json = json[prop]));
-        if (json === null) return "null";
-        else if (json === undefined) return "";
-        else if (typeof json === "object") return JSON.stringify(json);
-        else return json.toString();
-      } catch (err) {
-        return "";
-      }
-    }
 
     // Reporter - Returns an entry from a JSON array (0-based).
     // NUM - Number, ARRAY - String (JSON Array)
-    getFromJSONArray(args) {
-      var json_array = JSON.parse(args.ARRAY);
-      if (typeof json_array[args.NUM] === "undefined") {
-        return "";
-      } else {
-        let data = json_array[args.NUM];
-
-        if (typeof data == "object") {
-          data = JSON.stringify(data); // Make the JSON safe for Scratch
-        }
-
-        return data;
-      }
-    }
 
     // Reporter - Returns a RESTful GET promise.
     // url - String
-    fetchURL(args) {
-      return Scratch.fetch(args.url, { method: "GET" })
-        .then((response) => response.text())
-        .catch((error) => {
-          //console.warn(`[CloudLink] Fetch error: ${error}`);
-        });
-    }
 
     // Reporter - Returns a RESTful request promise.
     // url - String, method - String, data - String, headers - String
-    requestURL(args) {
-      if (args.method == "GET" || args.method == "HEAD") {
-        return Scratch.fetch(args.url, {
-          method: args.method,
-          headers: JSON.parse(args.headers),
-        })
-          .then((response) => response.text())
-          .catch((error) => {
-            //console.warn(`[CloudLink] Request error: ${error}`);
-          });
-      } else {
-        return Scratch.fetch(args.url, {
-          method: args.method,
-          headers: JSON.parse(args.headers),
-          body: args.data,
-        })
-          .then((response) => response.text())
-          .catch((error) => {
-            //console.warn(`[CloudLink] Request error: ${error}`);
-          });
-      }
-    }
 
     // Event
     // ID - String (listener)
@@ -2141,20 +1812,6 @@
 
     // Reporter - Returns a JSON-ified value.
     // toBeJSONified - String
-    makeJSON(args) {
-      if (typeof args.toBeJSONified == "string") {
-        try {
-          JSON.parse(args.toBeJSONified);
-          return Cast.toString(args.toBeJSONified);
-        } catch (err) {
-          return "Not JSON!";
-        }
-      } else if (typeof args.toBeJSONified == "object") {
-        return JSON.stringify(args.toBeJSONified);
-      } else {
-        return "Not JSON!";
-      }
-    }
 
     // Boolean - Returns true if connected.
     getComState() {
@@ -2531,27 +2188,9 @@
 
     // Command - Sends a raw-format command without specifying an ID.
     // CMD - String (command), DATA - String
-    runCMDnoID(args) {
-      // Must be connected.
-      if (clVars.socket == null) return;
-
-      sendMessage({ cmd: args.CMD, val: args.DATA });
-    }
 
     // Command - Sends a raw-format command with an ID.
     // CMD - String (command), DATA - String, ID - String (recipient ID)
-    runCMD(args) {
-      // Must be connected.
-      if (clVars.socket == null) return;
-
-      // Prevent running if the username hasn't been set.
-      if (!clVars.username.accepted) {
-        //console.warn("[CloudLink] Username must be set before using this command!");
-        return;
-      }
-
-      sendMessage({ cmd: args.CMD, val: args.DATA, id: args.ID });
-    }
 
     // Command - Resets the "returnIsNewData" boolean state.
     // TYPE - String (menu datamenu)
