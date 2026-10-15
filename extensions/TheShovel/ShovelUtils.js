@@ -117,18 +117,6 @@
             },
           },
           {
-            opcode: "loadExtension",
-            blockType: Scratch.BlockType.COMMAND,
-            text: Scratch.translate("load extension from [TEXT]"),
-            arguments: {
-              TEXT: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: "https://extensions.turbowarp.org/utilities.js",
-              },
-            },
-          },
-
-          {
             opcode: "restartProject",
             blockType: Scratch.BlockType.COMMAND,
             text: Scratch.translate("restart project"),
@@ -289,12 +277,6 @@
 
     restartProject() {
       vm.greenFlag();
-    }
-
-    async loadExtension({ TEXT }) {
-      if (await vm.securityManager.canLoadExtensionFromProject(TEXT)) {
-        vm.extensionManager.loadExtensionURL(TEXT);
-      }
     }
 
     getlist({ TEXT }) {

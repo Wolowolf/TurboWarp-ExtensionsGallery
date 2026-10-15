@@ -858,12 +858,6 @@
               },
             },
           },
-          {
-            opcode: "projectURL",
-            blockType: Scratch.BlockType.REPORTER,
-            text: Scratch.translate("project URL"),
-            disableMonitor: true,
-          },
 
           "---",
 
@@ -1465,10 +1459,6 @@
         if (user.includes("Safari")) return "Safari";
         return "Other";
       }
-    }
-
-    projectURL() {
-      return window.location.href;
     }
 
     consoleLog(args) {

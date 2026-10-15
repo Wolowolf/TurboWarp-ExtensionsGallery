@@ -127,9 +127,6 @@ All images in this folder are licensed under the [GNU General Public License ver
  - Created by [@CST1229](https://github.com/CST1229) in https://github.com/TurboWarp/extensions/issues/90#issuecomment-1595642879
  - Based on icons: [list_icon.svg](https://github.com/ScratchAddons/ScratchAddons/blob/master/addons/block-palette-icons/icons/list_icon.svg) and [variables_icon.svg](https://github.com/ScratchAddons/ScratchAddons/blob/master/addons/block-palette-icons/icons/variables_icon.svg)
 
-## ZXMushroom63/searchApi.svg
- - Created by [@CST1229](https://github.com/CST1229) in https://github.com/TurboWarp/extensions/issues/90#issuecomment-1596158611
-
 ## CubesterYT/WindowControls.svg
  - Created by [@BlueDome77](https://github.com/BlueDome77) for the Window Controls extension Collaboration
  - Dango based on dango from [Twemoji](https://twemoji.twitter.com/) under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
@@ -160,10 +157,6 @@ All images in this folder are licensed under the [GNU General Public License ver
 
 ## Lily/SoundExpanded.svg
  - Created by [HamsterCreativity](https://github.com/HamsterCreativity) in https://github.com/TurboWarp/extensions/issues/90#issuecomment-1694410464
-
-## iframe.svg
- - Created by [@NamelessCat](https://scratch.mit.edu/users/NamelessCat/)
- - Dango based on dango from [Twemoji](https://twemoji.twitter.com/) under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 
 ## Lily/Video.svg
  - Created by [@LilyMakesThings](https://github.com/LilyMakesThings) in https://github.com/TurboWarp/extensions/pull/656

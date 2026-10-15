@@ -7,7 +7,7 @@ Shovel Utils is an extension focused mostly on injecting and modifying sprites a
 
 ## Importing Assets
 
-Shovel Utils offers an easy way to import several types of assets, including sprites, costumes, sounds, extensions, and even full projects.
+Shovel Utils offers an easy way to import several types of assets, including sprites, costumes, sounds, and even full projects.
 
 ---
 
@@ -37,12 +37,6 @@ import project from [https://extensions.turbowarp.org/samples/Box2D.sb3]
 ```
 
 Imports a full project from a link. This project will completely replace the contents of the current one. If the project is unsandboxed, it will ask permission before swapping contents.
-
-```scratch
-load extension from [https://extensions.turbowarp.org/utilities.js]
-```
-
-Imports any extension from a link. Extensions from the [Extension Gallery](https://extensions.turbowarp.org) can run unsandboxed, and don't require permission to import.
 
 ## Other Ways to Modify The Project
 
