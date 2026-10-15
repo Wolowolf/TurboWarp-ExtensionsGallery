@@ -197,27 +197,6 @@
           "---",
 
           {
-            opcode: "replaceCostumeContent",
-            blockType: Scratch.BlockType.COMMAND,
-            text: Scratch.translate("set [TYPE] for [COSTUME] to [CONTENT]"),
-            hideFromPalette: true, // needed for compatibility, also superceeded by skins
-            arguments: {
-              TYPE: {
-                type: Scratch.ArgumentType.STRING,
-                menu: "SVGPNG",
-                defaultValue: "SVG",
-              },
-              COSTUME: {
-                type: Scratch.ArgumentType.COSTUME,
-              },
-              CONTENT: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: "<svg />",
-              },
-            },
-            extensions: ["colours_looks"],
-          },
-          {
             opcode: "replaceCostumeContentNew",
             blockType: Scratch.BlockType.COMMAND,
             text: Scratch.translate("set svg for [COSTUME] to [CONTENT]"),
@@ -493,38 +472,6 @@
       });
     }
 
-    replaceCostumeContent(args, util) {
-      const costumeIndex = this.getCostumeInput(args.COSTUME, util.target);
-      const costume = util.target.sprite.costumes[costumeIndex];
-      if (!costume) {
-        console.error("Costume doesn't exist");
-        return;
-      }
-
-      //This is here to ensure no changes are made to bitmap costumes, as changes are irreversible
-      //Check will be removed when it's possible to edit bitmap skins
-      const format = costume.asset.assetType.runtimeFormat;
-      if (format !== "svg") {
-        console.error("Costume is not vector");
-        return;
-      }
-
-      const contentType = args.TYPE;
-      const content = args.CONTENT;
-      if (contentType === "SVG") {
-        try {
-          renderer.updateSVGSkin(
-            costume.skinId,
-            Scratch.Cast.toString(content)
-          );
-          renderer._allSkins[costume.skinId].differsFromAsset = true;
-        } catch (e) {
-          console.error(e);
-        }
-      } else {
-        console.error("Options other than SVG are currently unavailable");
-      }
-    }
 
     async replaceCostumeContentNew(args, util) {
       const costumeIndex = this.getCostumeInput(args.COSTUME, util.target);

@@ -1719,22 +1719,6 @@
           //Useless block keep for compat
           {
             disableMonitor: true,
-            opcode: "setDURIclampmode",
-            blockType: Scratch.BlockType.COMMAND,
-            text: Scratch.translate(
-              "set imported image wrap mode to [clampMode]"
-            ),
-            hideFromPalette: true,
-            arguments: {
-              clampMode: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: "33071",
-                menu: "wrapType",
-              },
-            },
-          },
-          {
-            disableMonitor: true,
             opcode: "addBlankIMG",
             blockType: Scratch.BlockType.COMMAND,
             text: Scratch.translate(
@@ -2812,22 +2796,6 @@
             opcode: "clearDepth",
             blockType: Scratch.BlockType.COMMAND,
             text: Scratch.translate("Erase Depth"),
-          },
-          {
-            hideFromPalette: true,
-            opcode: "setAdvancedOptionValueTo",
-            blockType: Scratch.BlockType.COMMAND,
-            text: Scratch.translate("set [setting] to [value]"),
-            arguments: {
-              setting: {
-                type: Scratch.ArgumentType.STRING,
-                menu: "advancedSettingValuesMenu",
-              },
-              value: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: "1000",
-              },
-            },
           },
           {
             opcode: "setPrefix",
@@ -3999,9 +3967,6 @@
 
     //?Image/costume Api
     //? this block broke. Thus why it no longer has functionality.
-    setDURIclampmode({ clampMode }) {
-      return;
-    }
 
     addBlankIMG({ color, width, height, name }) {
       //Just a simple thing to allow for pen drawing
@@ -4169,16 +4134,6 @@
       this.AdvancedSettings[Setting] = false;
     }
 
-    setAdvancedOptionValueTo({ setting, value }) {
-      switch (setting) {
-        case "depthMax":
-          this.AdvancedSettings._maxDepth = Math.max(value, 100);
-          break;
-
-        default:
-          break;
-      }
-    }
 
     setPrefix({ prefix, value }) {
       //That simple

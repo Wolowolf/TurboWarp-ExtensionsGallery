@@ -373,21 +373,6 @@
             extensions: ["colours_looks"],
           },
           {
-            opcode: "setBlend",
-            blockType: Scratch.BlockType.COMMAND,
-            text: Scratch.translate("use [BLENDMODE] blending (old)"),
-            arguments: {
-              BLENDMODE: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: "default",
-                menu: "blends",
-              },
-            },
-            filter: [Scratch.TargetType.SPRITE],
-            hideFromPalette: true,
-            extensions: ["colours_looks"],
-          },
-          {
             opcode: "getBlend",
             blockType: Scratch.BlockType.REPORTER,
             text: Scratch.translate("blending"),
@@ -396,30 +381,6 @@
             extensions: ["colours_looks"],
           },
           "---",
-          {
-            opcode: "setAdditiveBlend",
-            blockType: Scratch.BlockType.COMMAND,
-            text: Scratch.translate("turn additive blending [STATE]"),
-            arguments: {
-              STATE: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: "on",
-                menu: "states",
-              },
-            },
-            filter: [Scratch.TargetType.SPRITE],
-            hideFromPalette: true,
-            extensions: ["colours_looks"],
-          },
-          {
-            opcode: "getAdditiveBlend",
-            blockType: Scratch.BlockType.BOOLEAN,
-            text: Scratch.translate("is additive blending on?"),
-            filter: [Scratch.TargetType.SPRITE],
-            hideFromPalette: true,
-            disableMonitor: true,
-            extensions: ["colours_looks"],
-          },
         ],
         menus: {
           states: {
@@ -535,25 +496,6 @@
       }
     }
 
-    setBlend({ BLENDMODE }, { target }) {
-      switch (BLENDMODE) {
-        case "additive":
-          this._setBlend("additive legacy", target);
-          return;
-        case "subtract":
-          this._setBlend("subtract legacy", target);
-          return;
-        case "invert":
-          this._setBlend("invert legacy", target);
-          return;
-        case "default":
-        case "multiply":
-          this._setBlend(BLENDMODE, target);
-          return;
-        default:
-          return;
-      }
-    }
 
     setBlend2({ BLENDMODE }, { target }) {
       switch (BLENDMODE) {
@@ -604,21 +546,7 @@
       }
     }
 
-    setAdditiveBlend({ STATE }, { target }) {
-      if (STATE === "on") this._setBlend("additive legacy", target);
-      if (STATE === "off") this._setBlend("default", target);
-    }
 
-    getAdditiveBlend(args, { target }) {
-      switch (target.blendMode) {
-        case "additive":
-        case "additive legacy":
-        case "additive with alpha":
-          return true;
-        default:
-          return false;
-      }
-    }
   }
 
   Scratch.extensions.register(new Extension());

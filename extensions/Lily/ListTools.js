@@ -262,40 +262,6 @@
 
           "---",
 
-          {
-            opcode: "forEachListItem",
-            blockType: Scratch.BlockType.LOOP,
-            text: Scratch.translate("for each item value [VAR] in [LIST]"),
-            hideFromPalette:
-              !runtime.extensionManager.isExtensionLoaded("lmsTempVars2"),
-            arguments: {
-              VAR: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: "thread variable",
-              },
-              LIST: {
-                type: Scratch.ArgumentType.STRING,
-                menu: "lists",
-              },
-            },
-          },
-          {
-            opcode: "forEachListItemNum",
-            blockType: Scratch.BlockType.LOOP,
-            text: Scratch.translate("for each item # [VAR] in [LIST]"),
-            hideFromPalette:
-              !runtime.extensionManager.isExtensionLoaded("lmsTempVars2"),
-            arguments: {
-              VAR: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: "thread variable",
-              },
-              LIST: {
-                type: Scratch.ArgumentType.STRING,
-                menu: "lists",
-              },
-            },
-          },
 
           "---",
 
@@ -628,54 +594,7 @@
       list2.value = list2.value.concat(list1.value);
     }
 
-    forEachListItem(args, util) {
-      const list = getVarObjectFromName(
-        Scratch.Cast.toString(args.LIST),
-        util,
-        "list"
-      );
-      if (!list) return false;
-      const listLength = list.value.length;
 
-      const thread = util.thread;
-      if (!thread.variables) thread.variables = {};
-      const vars = thread.variables;
-
-      if (typeof util.stackFrame.index === "undefined") {
-        util.stackFrame.index = 0;
-      }
-
-      if (util.stackFrame.index < listLength) {
-        let itemIndex = util.stackFrame.index;
-        vars[args.VAR] = list.value[itemIndex];
-        util.stackFrame.index++;
-        return true;
-      }
-    }
-
-    forEachListItemNum(args, util) {
-      const list = getVarObjectFromName(
-        Scratch.Cast.toString(args.LIST),
-        util,
-        "list"
-      );
-      if (!list) return false;
-      const listLength = list.value.length;
-
-      const thread = util.thread;
-      if (!thread.variables) thread.variables = {};
-      const vars = thread.variables;
-
-      if (typeof util.stackFrame.index === "undefined") {
-        util.stackFrame.index = 0;
-      }
-
-      if (util.stackFrame.index < listLength) {
-        util.stackFrame.index++;
-        vars[args.VAR] = util.stackFrame.index;
-        return true;
-      }
-    }
 
     setListArray(args, util) {
       const list = getVarObjectFromName(

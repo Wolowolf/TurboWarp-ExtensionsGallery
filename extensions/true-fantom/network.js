@@ -141,12 +141,6 @@
 
         blocks: [
           {
-            opcode: "connected_to_internet_block",
-            blockType: Scratch.BlockType.BOOLEAN,
-            text: Scratch.translate("connected to internet?"),
-            hideFromPalette: true,
-          },
-          {
             opcode: "browser_block",
             blockType: Scratch.BlockType.REPORTER,
             text: Scratch.translate("browser"),
@@ -584,13 +578,6 @@
       };
     }
 
-    connected_to_internet_block() {
-      try {
-        return navigator.onLine;
-      } catch (err) {
-        return false;
-      }
-    }
     browser_block() {
       try {
         let has = (input) => navigator.userAgent.includes(input);

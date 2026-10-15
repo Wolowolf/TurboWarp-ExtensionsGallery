@@ -13711,35 +13711,6 @@
 
           "---",
 
-          {
-            opcode: "setProperties",
-            blockType: BlockType.COMMAND,
-            text: Scratch.translate({
-              id: "griffpatch.setProperties",
-              default:
-                "set density [density] roughness [friction] bounce [restitution]",
-              description: "Set the density of the object",
-            }),
-            arguments: {
-              density: {
-                type: ArgumentType.NUMBER,
-                menu: "DensityTypes",
-                defaultValue: 100,
-              },
-              friction: {
-                type: ArgumentType.NUMBER,
-                menu: "FrictionTypes",
-                defaultValue: 50,
-              },
-              restitution: {
-                type: ArgumentType.NUMBER,
-                menu: "RestitutionTypes",
-                defaultValue: 20,
-              },
-            },
-            filter: [Scratch.TargetType.SPRITE],
-            hideFromPalette: true,
-          },
           // {
           //     opcode: 'pinSprite',
           //     blockType: BlockType.COMMAND,
@@ -14272,19 +14243,6 @@
       return body.GetFixtureList().GetRestitution() * 100;
     }
 
-    setProperties(args, util) {
-      let body = bodies[util.target.id];
-      if (!body) {
-        body = this.setPhysicsFor(util.target);
-      }
-
-      body.GetFixtureList().SetDensity(Cast.toNumber(args.density) / 100.0);
-      body.GetFixtureList().SetFriction(Cast.toNumber(args.friction) / 100.0);
-      body
-        .GetFixtureList()
-        .SetRestitution(Cast.toNumber(args.restitution) / 100.0);
-      body.ResetMassData();
-    }
 
     pinSprite(args, util) {
       if (!bodies[util.target.id]) {

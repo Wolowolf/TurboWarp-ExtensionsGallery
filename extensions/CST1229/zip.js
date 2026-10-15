@@ -127,39 +127,6 @@
 
           // legacy blocks
           {
-            hideFromPalette: true,
-            opcode: "createEmpty",
-            blockType: Scratch.BlockType.COMMAND,
-            text: Scratch.translate({
-              default: 'create empty archive named "archive"',
-              description:
-                'Legacy block, not important to be translated. If you do, do not translate the name "archive"',
-            }),
-            arguments: {},
-          },
-          {
-            hideFromPalette: true,
-            opcode: "open",
-            blockType: Scratch.BlockType.COMMAND,
-            text: Scratch.translate({
-              default: 'open zip from [TYPE] [DATA] named "archive"',
-              description:
-                'Legacy block, not important to be translated. If you do, do not translate the name "archive"',
-            }),
-            arguments: {
-              TYPE: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: "URL",
-                menu: "fileType",
-              },
-              DATA: {
-                type: Scratch.ArgumentType.STRING,
-                // defaultValue: "http:/localhost:8000/hello.zip",
-                defaultValue: "https://extensions.turbowarp.org/hello.zip",
-              },
-            },
-          },
-          {
             opcode: "getZip",
             blockType: Scratch.BlockType.REPORTER,
             text: Scratch.translate(
@@ -789,9 +756,6 @@
 
       this.zips[this.zip] = new JSZip();
       this.zipPaths[this.zip] = "/";
-    }
-    createEmpty() {
-      this.createEmptyAs({ NAME: "archive" });
     }
 
     async openAs({ TYPE, DATA, NAME }) {

@@ -3041,29 +3041,6 @@ void main() {
       },
     },
     {
-      opcode: "setMeshCentroidInterpolation",
-      blockType: BlockType.COMMAND,
-      text: "set [NAME] accurate interpolation [USECENTROID]",
-      hideFromPalette: true,
-      arguments: {
-        NAME: {
-          type: ArgumentType.STRING,
-          defaultValue: "my mesh",
-        },
-        USECENTROID: {
-          type: ArgumentType.STRING,
-          menu: "onOff",
-        },
-      },
-      def: function ({ NAME, USECENTROID }, { target }) {
-        const mesh = meshes.get(Cast.toString(NAME));
-        const useCentroid = Cast.toBoolean(USECENTROID);
-        if (!mesh) return;
-        mesh.myData.interpolation = useCentroid ? "MSAA_CENTROID" : "";
-        mesh.update();
-      },
-    },
-    {
       opcode: "setMeshMultiSampleInterpolation",
       blockType: BlockType.COMMAND,
       text: "set [NAME] compute color [MODE]",
@@ -4221,22 +4198,6 @@ void main() {
       text: "start with no transformation",
       def: function () {
         transforms[selectedTransform] = m4.identity();
-      },
-    },
-    {
-      opcode: "matStartWithExternal",
-      blockType: BlockType.COMMAND,
-      text: "start with [SOURCE]",
-      arguments: {
-        SOURCE: {
-          type: ArgumentType.STRING,
-          menu: "externalTransforms",
-        },
-      },
-      def: function ({ SOURCE }, util) {
-        if (!hasOwn(externalTransforms, SOURCE)) return;
-        const src = externalTransforms[SOURCE];
-        transforms[selectedTransform] = src.get() ?? m4.identity();
       },
     },
     {
@@ -5438,9 +5399,6 @@ void main() {
 
   class Extension {
     getInfo() {
-      definitions.find(
-        (b) => b.opcode == "matStartWithExternal"
-      ).hideFromPalette = Object.keys(externalTransforms).length == 0;
       definitions.find(
         (b) => b.opcode == "textureFromLMSVideo"
       ).hideFromPalette = !runtime.ext_lmsVideo;
