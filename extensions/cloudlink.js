@@ -239,8 +239,8 @@
         url: "ws://127.0.0.1:3000/",
       },
       7: {
-        id: "MikeDEV's Spare CL 0.2.0 Server",
-        url: "wss://cl.mikedev101.cc/",
+        id: "",
+        url: "",
       },
     },
   };
@@ -1968,6 +1968,8 @@
         //console.warn("[CloudLink] Not a valid server ID!");
         return;
       }
+      // An entry with a blank address connects to nothing.
+      if (!clVars.serverList[Cast.toString(args.ID)]["url"]) return;
       return newClient(clVars.serverList[Cast.toString(args.ID)]["url"]);
     }
 

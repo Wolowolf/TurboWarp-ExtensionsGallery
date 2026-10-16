@@ -91,8 +91,6 @@
         "true-fantom/network@name": "Netzwerk",
         "utilities@description": "Ein paar nützliche Blöcke.",
         "utilities@name": "Verschiedene Blöcke",
-        "veggiecan/LongmanDictionary@description": "Bekomme die Definitionen von Worten des Longman-Wörterbuches.",
-        "veggiecan/LongmanDictionary@name": "Longman Wörterbuch",
         "veggiecan/mobilekeyboard@description": "Zeige die Tastatur auf mobilen Geräten und erhalte die Eingabe der Benutzer, ohne ein Eingabemodal anzuzeigen.",
         "veggiecan/mobilekeyboard@name": "Mobile Tastatur"
     },
@@ -204,8 +202,6 @@
         "true-fantom/network@name": "Verkko",
         "utilities@description": "Joukko mielenkiintoisia lohkoja.",
         "utilities@name": "Työkalut",
-        "veggiecan/LongmanDictionary@description": "Käytä Longman-sanakirjan sanaselityksiä projekteissasi.",
-        "veggiecan/LongmanDictionary@name": "Longman-sanakirja",
         "veggiecan/mobilekeyboard@description": "Näytä näppäimistö mobiililaitteella ja saa käyttäjän syöte ilman minkäänlaisen syöteruudun näyttämistä.",
         "veggiecan/mobilekeyboard@name": "Mobiilinäppäimistö"
     },
@@ -310,8 +306,6 @@
         "true-fantom/network@name": "Rete",
         "utilities@description": "Diversi blocchi interessanti.",
         "utilities@name": "Utilità",
-        "veggiecan/LongmanDictionary@description": "Permette al tuo progetto di recuperare le definizioni delle parole inglesi del Dizionario Longman.",
-        "veggiecan/LongmanDictionary@name": "Dizionario Longman",
         "veggiecan/mobilekeyboard@description": "Mostra la tastiera sui dispositivi mobili permettendo all'utente di inserire il dato senza mostrare una finestra di dialogo.",
         "veggiecan/mobilekeyboard@name": "Tastiera Mobile"
     },
@@ -406,7 +400,6 @@
         "true-fantom/network@name": "ネットワーク",
         "utilities@description": "おもしろブロックたち",
         "utilities@name": "ユーティリティ",
-        "veggiecan/LongmanDictionary@description": "Longman Dictionaryから単語の意味を取得する(日本語非対応)",
         "veggiecan/mobilekeyboard@description": "モバイルデバイスにキーボードを表示し、入力モーダルを表示せずにユーザーの入力を取得する。",
         "veggiecan/mobilekeyboard@name": "モバイルキーボード"
     },
@@ -503,8 +496,6 @@
         "true-fantom/network@name": "네트워크",
         "utilities@description": "다양한 흥미로룬 블록들입니다.",
         "utilities@name": "유틸리티",
-        "veggiecan/LongmanDictionary@description": "프로젝트에서 Longman 사전의 단어 정의를 얻습니다.",
-        "veggiecan/LongmanDictionary@name": "Longman 사전",
         "veggiecan/mobilekeyboard@description": "모바일 기기에서 키보드를 띄우고 입력 창 없이 사용자의 입력을 받습니다.",
         "veggiecan/mobilekeyboard@name": "모바일 키보드"
     },
@@ -589,8 +580,6 @@
         "true-fantom/network@name": "Nettverk",
         "utilities@description": "En haug med interessante blokker.",
         "utilities@name": "Verktøy",
-        "veggiecan/LongmanDictionary@description": "Få definisjonene av ord fra Longman Dictionary i prosjektene dine.",
-        "veggiecan/LongmanDictionary@name": "Longman Ordbok",
         "veggiecan/mobilekeyboard@description": "Vis tastaturet på mobile enheter og få brukernes innspill uten å vise noen inngangsmodal.",
         "veggiecan/mobilekeyboard@name": "Mobiltastatur"
     },
@@ -678,7 +667,6 @@
         "true-fantom/network@name": "Netwerk",
         "utilities@description": "Maak gebruik van een verzameling interessante blokken.",
         "utilities@name": "Utiliteiten",
-        "veggiecan/LongmanDictionary@description": "Krijg de definities van woorden uit het Longman Dictionary in je projecten. Let op: alleen in het Engels.",
         "veggiecan/mobilekeyboard@description": "Toon het toetsenbord op mobiele apparaten en verwerk de invoer zonder invoervelden te gebruiken.",
         "veggiecan/mobilekeyboard@name": "Mobiel toetsenbord"
     },
@@ -790,8 +778,6 @@
         "true-fantom/network@name": "Сеть",
         "utilities@description": "Куча интересных блоков.",
         "utilities@name": "Утилиты",
-        "veggiecan/LongmanDictionary@description": "Используйте определения слов из словаря Лонгмана в своих проектах.",
-        "veggiecan/LongmanDictionary@name": "Словарь Лонгмана",
         "veggiecan/mobilekeyboard@description": "Показывает клавиатуру на мобильных устройствах и заставляет пользователей вводить данные, не показывая никаких режимов ввода.",
         "veggiecan/mobilekeyboard@name": "Мобильная Клавиатура"
     },
@@ -1008,8 +994,6 @@
         "true-fantom/network@name": "网络",
         "utilities@description": "一些有趣的积木集合。",
         "utilities@name": "工具箱",
-        "veggiecan/LongmanDictionary@description": "在你的作品中从朗文辞典获取单词的定义。",
-        "veggiecan/LongmanDictionary@name": "朗文辞典",
         "veggiecan/mobilekeyboard@description": "在移动设备上显示键盘，并在不显示任何输入框的情况下获取用户输入。",
         "veggiecan/mobilekeyboard@name": "触屏键盘"
     },
