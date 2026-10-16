@@ -231,18 +231,6 @@
 
     // Prevent accidentally sending the handshake command more than once per connection.
     handshakeAttempted: false,
-
-    // Storage for the publically available CloudLink instances.
-    serverList: {
-      0: {
-        id: "Localhost",
-        url: "ws://127.0.0.1:3000/",
-      },
-      7: {
-        id: "",
-        url: "",
-      },
-    },
   };
 
   function generateVersionString() {
@@ -889,12 +877,6 @@
           },
 
           {
-            opcode: "returnServerList",
-            blockType: Scratch.BlockType.REPORTER,
-            text: Scratch.translate("server list"),
-          },
-
-          {
             opcode: "returnMOTD",
             blockType: Scratch.BlockType.REPORTER,
             text: Scratch.translate("server MOTD"),
@@ -1120,18 +1102,6 @@
               IP: {
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: "ws://127.0.0.1:3000/",
-              },
-            },
-          },
-
-          {
-            opcode: "openSocketPublicServers",
-            blockType: Scratch.BlockType.COMMAND,
-            text: Scratch.translate("connect to server [ID]"),
-            arguments: {
-              ID: {
-                type: Scratch.ArgumentType.NUMBER,
-                defaultValue: 1,
               },
             },
           },
@@ -1526,10 +1496,6 @@
       return makeValueScratchSafe(clVars.server_version);
     }
 
-    // Reporter - Returns the serverlist value.
-    returnServerList() {
-      return makeValueScratchSafe(clVars.serverList);
-    }
 
     // Reporter - Returns the reported Message-Of-The-Day.
     returnMOTD() {
@@ -1946,31 +1912,6 @@
         return;
       }
       return newClient(args.IP);
-    }
-
-    // Command - Establishes a connection to a selected server.
-    // ID - Number (server entry #)
-    openSocketPublicServers(args) {
-      if (clVars.socket != null) {
-        //console.warn("[CloudLink] Already connected to a server.");
-        return;
-      }
-      // This is the only server that's listed and works.
-      if (Cast.toNumber(args.ID) >= 1) {
-        args.ID = 7;
-      }
-      if (
-        !Object.prototype.hasOwnProperty.call(
-          clVars.serverList,
-          Cast.toString(args.ID)
-        )
-      ) {
-        //console.warn("[CloudLink] Not a valid server ID!");
-        return;
-      }
-      // An entry with a blank address connects to nothing.
-      if (!clVars.serverList[Cast.toString(args.ID)]["url"]) return;
-      return newClient(clVars.serverList[Cast.toString(args.ID)]["url"]);
     }
 
     // Command - Closes the connection.
