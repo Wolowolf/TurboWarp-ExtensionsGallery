@@ -141,9 +141,6 @@ All images in this folder are licensed under the [GNU General Public License ver
  - Created by [@XeroName](https://scratch.mit.edu/users/plant2014/) in https://github.com/TurboWarp/extensions/pull/622
  - Incorporated some changes by [@xTvii](https://github.com/xTvii) in https://github.com/TurboWarp/extensions/issues/1079#issue-1926845796
 
-## XmerOriginals/closecontrol.svg
- - Created by [xTvii](https://github.com/xTvii) in https://github.com/TurboWarp/extensions/issues/1607
-
 ## Lily/ListTools.svg
  - Created by [@LilyMakesThings](https://github.com/LilyMakesThings).
  - Background "blobs" by Scratch.
